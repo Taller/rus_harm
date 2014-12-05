@@ -1,0 +1,10 @@
+td {
+    width : 60px;
+    height : 30px;
+    text-align : center;
+}
+
+.pressed_as_bold {
+    font-size: 14pt;
+    font-weight: bold;
+}
