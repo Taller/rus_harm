@@ -2,6 +2,8 @@ td {
     width : 60px;
     height : 30px;
     text-align : center;
+    font-size: 12pt;
+    font-weight: normal;
 }
 
 .pressed_as_bold {
@@ -13,3 +15,6 @@ td {
     font-size: 12pt;
     font-weight: normal;
 }
+
+.align-right { text-align: right; }
+.align-left { text-align: left; }

@@ -7,122 +7,270 @@
   </head>
 
 <body>
+<!--
 <input id="melody" type="text"/>
 <input type="button" value="Start" onClick="play();"/>
-
-<table border="1">
+-->
+<table style="width:800px;margin:auto;" border="2px">
+<tr>
+<td>
+<table id="right_kbd" style="margin:auto auto auto 0;">
     <tr><!-- left -->
-        <td>x</td>
-        <td>&nbsp;</td>
+        <td id="D_SHARP" class="align-left">D#</td>
+        <td class="align-right">&nbsp;</td>
     </tr>    
     <tr><!-- right -->
-        <td>&nbsp;</td>
-        <td>x</td>
+        <td class="align-left">&nbsp;</td>
+        <td id="F_SHARP" class="align-right">F#</td>
     </tr>
     
     <tr><!-- left -->
-        <td>x</td>
-        <td>&nbsp;</td>
+        <td id="G_SHARP" class="align-left">G#</td>
+        <td class="align-right">&nbsp;</td>
     </tr>    
     <tr><!-- right -->
-        <td>&nbsp;</td>
-        <td id="D1">D</td>
+        <td class="align-left">&nbsp;</td>
+        <td id="D1" class="align-right">D</td>
     </tr>    
     
     <tr><!-- left -->
-        <td id="C1">C</td>
-        <td>&nbsp;</td>
+        <td id="C1" class="align-left">C</td>
+        <td class="align-right">&nbsp;</td>
     </tr>  
     <tr><!-- right -->
-        <td>&nbsp;</td>
-        <td  id="F1">F</td>
+        <td class="align-left">&nbsp;</td>
+        <td id="F1" class="align-right">F</td>
     </tr>      
 
     <tr><!-- left -->
-        <td id="E1">E</td>
-        <td>&nbsp;</td>
+        <td id="E1" class="align-left">E</td>
+        <td class="align-right">&nbsp;</td>
     </tr>    
     <tr><!-- right -->
-        <td>&nbsp;</td>
-        <td id="A1">A</td>
+        <td class="align-left">&nbsp;</td>
+        <td id="A1" class="align-right">A</td>
     </tr>    
 
     <tr><!-- left -->
-        <td id="G1">G</td>
-        <td>&nbsp;</td>
+        <td id="G1" class="align-left">G</td>
+        <td class="align-right">&nbsp;</td>
     </tr> 
     <tr><!-- right -->
-        <td>&nbsp;</td>
-        <td id="C2">C</td>
+        <td class="align-left">&nbsp;</td>
+        <td id="C2" class="align-right">C</td>
     </tr>    
 
     <tr><!-- left -->
-        <td id="H1">H</td>
-        <td>&nbsp;</td>
+        <td id="H1" class="align-left">H</td>
+        <td class="align-right">&nbsp;</td>
     </tr>  
     <tr><!-- right -->
-        <td>&nbsp;</td>
-        <td id="E2">E</td>
+        <td class="align-left">&nbsp;</td>
+        <td id="E2" class="align-right">E</td>
     </tr>    
 
     <tr><!-- left -->
-        <td id="D2">D</td>
-        <td>&nbsp;</td>
+        <td id="D2" class="align-left">D</td>
+        <td class="align-right">&nbsp;</td>
     </tr>    
     <tr><!-- right -->
-        <td>&nbsp;</td>
-        <td id="G2">G</td>
+        <td class="align-left">&nbsp;</td>
+        <td id="G2" class="align-right">G</td>
     </tr>    
 
     <tr><!-- left -->
-        <td id="F2">F</td>
-        <td>&nbsp;</td>
+        <td id="F2" class="align-left">F</td>
+        <td class="align-right">&nbsp;</td>
     </tr>    
     <tr><!-- right -->
-        <td>&nbsp;</td>
-        <td id="H2">H</td>
+        <td class="align-left">&nbsp;</td>
+        <td id="H2" class="align-right">H</td>
     </tr>    
 
     <tr><!-- left -->
-        <td id="A2">A</td>
-        <td>&nbsp;</td>
+        <td id="A2" class="align-left">A</td>
+        <td class="align-right">&nbsp;</td>
     </tr>    
     <tr><!-- right -->
-        <td>&nbsp;</td>
-        <td id="D3">D</td>
+        <td class="align-left">&nbsp;</td>
+        <td id="D3" class="align-right">D</td>
     </tr>    
 
     <tr><!-- left -->
-        <td id="C3">C</td>
-        <td>&nbsp;</td>
+        <td id="C3" class="align-left">C</td>
+        <td class="align-right">&nbsp;</td>
     </tr>    
     <tr><!-- right -->
-        <td>&nbsp;</td>
-        <td id="F3">F</td>
+        <td class="align-left">&nbsp;</td>
+        <td id="F3" class="align-right">F</td>
     </tr>    
 
     <tr><!-- left -->
-        <td id="E3">E</td>
-        <td>&nbsp;</td>
+        <td id="E3" class="align-left">E</td>
+        <td class="align-right">&nbsp;</td>
     </tr>    
     <tr><!-- right -->
-        <td>&nbsp;</td>
-        <td id="A3">A</td>
+        <td class="align-left">&nbsp;</td>
+        <td id="A3" class="align-right">A</td>
     </tr>    
 
     <tr><!-- left -->
-        <td id="G3">G</td>
-        <td>&nbsp;</td>
+        <td id="G3" class="align-left">G</td>
+        <td class="align-right">&nbsp;</td>
     </tr>    
     <tr><!-- right -->
-        <td>&nbsp;</td>
-        <td id="C4">C</td>
+        <td class="align-left">&nbsp;</td>
+        <td id="C4" class="align-right">C</td>
     </tr>    
 
     <tr><!-- left -->
-        <td id="H3">H</td>
-        <td>&nbsp;</td>
+        <td id="H3" class="align-left">H</td>
+        <td class="align-right">&nbsp;</td>
     </tr>    
 </table>    
+</td>
+<td>
+<table id="menu" border="1px" style="margin:auto;">
+<tr>
+  <td rowspan="2">C</td>
+  <td>minor</td>
+</tr>
+<tr>
+  <td>7</td>
+</tr>
+<tr>
+  <td rowspan="2">D</td>
+  <td>minor</td>
+</tr>
+<tr>
+  <td>7</td>
+</tr>
+<tr>
+  <td rowspan="2">E</td>
+  <td>minor</td>
+</tr>
+<tr>
+  <td>7</td>
+</tr>
+<tr>
+  <td rowspan="2">F</td>
+  <td>minor</td>
+</tr>
+<tr>
+  <td>7</td>
+</tr>
+<tr>
+  <td rowspan="2">G</td>
+  <td>minor</td>
+</tr>
+<tr>
+  <td>7</td>
+</tr>
+<tr>
+  <td rowspan="2">A</td>
+  <td>minor</td>
+</tr>
+<tr>
+  <td>7</td>
+</tr>
+<tr>
+  <td rowspan="2">H</td>
+  <td>minor</td>
+</tr>
+<tr>
+  <td>7</td>
+</tr>
+</table>
+</td>
+<td>
+<table id="left_kbd" style="margin:auto 0 auto auto;">
+    <tr><!-- left -->
+        <td id="LF_SHARP_1">F#</td>
+        <td>&nbsp;</td>
+        <td id="LD_CHORD_3">D</td>
+    </tr>    
+    <tr><!-- left -->
+        <td>&nbsp;</td>
+        <td id="LH7_CHORD_2">H7</td>
+        <td>&nbsp;</td>
+    </tr>    
+    <tr><!-- left -->
+        <td id="LA_1">A</td>
+        <td>&nbsp;</td>
+        <td>D</td>
+    </tr>    
+    <tr><!-- left -->
+        <td>&nbsp;</td>
+        <td id="LH_2">H</td>
+        <td>&nbsp;</td>
+    </tr>    
+    <tr><!-- left -->
+        <td id="LH_1">H</td>
+        <td>&nbsp;</td>
+        <td id="LG_CHORD_3">G</td>
+    </tr>    
+    <tr><!-- left -->
+        <td>&nbsp;</td>
+        <td id="LE7_CHORD_2">E7</td>
+        <td>&nbsp;</td>
+    </tr>    
+    <tr><!-- left -->
+        <td id="LC_1">C</td>
+        <td>&nbsp;</td>
+        <td id="LG_3">G</td>
+    </tr>    
+    <tr><!-- left -->
+        <td>&nbsp;</td>
+        <td id="LE_2">E</td>
+        <td>&nbsp;</td>
+    </tr>    
+    <tr><!-- left -->
+        <td id="LD_1">D</td>
+        <td>&nbsp;</td>
+        <td id="LC_CHORD_3">C</td>
+    </tr>    
+    <tr><!-- left -->
+        <td>&nbsp;</td>
+        <td id="LAm_CHORD_2">Am</td>
+        <td>&nbsp;</td>
+    </tr>    
+    <tr><!-- left -->
+        <td id="LE_1">E</td>
+        <td>&nbsp;</td>
+        <td id="LC_3">C</td>
+    </tr>    
+    <tr><!-- left -->
+        <td>&nbsp;</td>
+        <td id="AL_2">A</td>
+        <td>&nbsp;</td>
+    </tr>    
+    <tr><!-- left -->
+        <td id="LF_1">F</td>
+        <td>&nbsp;</td>
+        <td id="LF_CHORD_3">F</td>
+    </tr>    
+    <tr><!-- left -->
+        <td>&nbsp;</td>
+        <td id="LDm_CHORD_2">Dm</td>
+        <td>&nbsp;</td>
+    </tr>    
+    <tr><!-- left -->
+        <td id="LG_1">G</td>
+        <td>&nbsp;</td>
+        <td id="LF_3">F</td>
+    </tr>    
+    <tr><!-- left -->
+        <td>&nbsp;</td>
+        <td id="LD_2">D</td>
+        <td>&nbsp;</td>
+    </tr>    
+    <tr><!-- left -->
+        <td id="LA_1">A</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>    
+</table>
+</td></tr>
+
 </body>
 </html>
