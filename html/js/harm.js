@@ -80,6 +80,10 @@ function getElementByNoteLeft(note, row) {
     }
 
 
+    if (note === 'AA' && row === 1) {
+        return document.getElementById('LAA_1');
+    }
+
     if (note === 'F#' || note === 'Gb') {
         return document.getElementById('LF_SHARP_1');
     }
@@ -139,6 +143,7 @@ function getElementByChordLeft(chord) {
 
 function markNotesFor(chord) {
     clearPressed();
+    document.getElementById('current_chord').innerHTML = chord;
 
     var notesInChord = chords[chord].split('-');
 
@@ -148,9 +153,25 @@ function markNotesFor(chord) {
             if (rightNote != undefined) {
                 setPressedStyle(rightNote);
             }
+            // fix for C4 note
+            if (note === 'C' && i ===  3) {
+                var rightNote = getElementByNoteRight(note + 4, 1);
+                if (rightNote != undefined) {
+                    setPressedStyle(rightNote);
+                }
+            }
+
             var leftNote = getElementByNoteLeft(note, i);
             if (leftNote != undefined) {
                 setPressedStyle(leftNote);
+            }
+
+            // fix for seconf A on first row
+            if (note === 'A' && i === 1) {
+                var leftNote = getElementByNoteLeft('AA', i);
+                if (leftNote != undefined) {
+                    setPressedStyle(leftNote);
+                }
             }
             var chord = getElementByChordLeft(chord);
             if (chord != undefined) {
@@ -181,6 +202,7 @@ function removePressedStyle(el) {
 }
 
 function clearPressed() {
+    document.getElementById('current_chord').innerHTML = '';
     var pressedElements = document.getElementById('keyboard').getElementsByClassName('pressed_as_bold');
     while (pressedElements.length > 0) {
         removePressedStyle(pressedElements[0]);

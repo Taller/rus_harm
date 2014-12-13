@@ -128,7 +128,8 @@
     </table>
 </td>
 <td style="border:solid 1px black;width:30%;">
-    <table id="menu" border="1px" style="margin:auto;width:100%;">
+    <div id="current_chord" style="font-size: 34pt;margin:10px auto 10px auto;height:50px;"></div>
+    <table id="menu" border="1px" style="margin:auto;width:100%;cursor: pointer;">
         <tr>
             <td rowspan="2" onClick="markNotesFor('C');">C</td>
             <td onClick="markNotesFor('Cm');">minor</td>
@@ -180,7 +181,7 @@
         </tr>
     </table>
     <br/>
-    <div style="border:solid 1px black;" onClick="clearPressed();">Clear!</div>
+    <!--<div style="border:solid 1px black;" onClick="clearPressed();">Clear!</div>-->
 </td>
 <td style="width:35%;">
     <table id="left_kbd" style="margin:auto 10px auto auto;">
@@ -265,7 +266,7 @@
             <td>&nbsp;</td>
         </tr>
         <tr><!-- left -->
-            <td id="LA_1" class="align-left">A</td>
+            <td id="LAA_1" class="align-left">A</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
         </tr>
