@@ -1,7 +1,7 @@
 var chords
     = {
-    "A": "A-E-C#",
-    "A7": "A-E-C#-G#",
+    "A": "A-E-Db",
+    "A7": "A-E-Db-G",
     "Am": "A-E-C",
     "H": "H-F#-Eb",
     "H7": "H-F#-Eb-A",
@@ -37,7 +37,7 @@ function getElementByNoteRight(note, octave) {
         return undefined;
     }
 
-    if (note === 'F#' || note === 'Db') {
+    if (note === 'F#' || note === 'Gb') {
         return document.getElementById('F_SHARP');
     }
 

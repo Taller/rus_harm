@@ -9,7 +9,11 @@
 
 <body>
 
-<table id="keyboard" cellpadding="0" cellspacing="0" style="width:800px;margin:auto;border:solid 1px black">
+<table
+    id="keyboard"
+    cellpadding="0"
+    cellspacing="0"
+    style="width:800px;margin:auto;border:solid 1px black">
 <tr>
 <td style="width:35%;">
     <table id="right_kbd" style="margin:auto auto auto 10px;">
@@ -127,8 +131,11 @@
         </tr>
     </table>
 </td>
-<td style="border:solid 1px black;width:30%;">
-    <div id="current_chord" style="font-size: 34pt;margin:10px auto 10px auto;height:50px;"></div>
+<td style="border:solid 1px black;width:30%;" rowspan="2">
+    <div
+        id="current_chord"
+        style="font-size:34pt;margin:10px auto 10px auto;height:50px;border-top:solid 1px black">
+    </div>
     <table id="menu" border="1px" style="margin:auto;width:100%;cursor: pointer;">
         <tr>
             <td rowspan="2" onClick="markNotesFor('C');">C</td>
@@ -272,6 +279,36 @@
         </tr>
     </table>
 </td>
+</tr>
+<tr>
+    <td>
+        <table>
+            <tr>
+                <td style="width:85%;">
+                    <textarea
+                            id="right_task"
+                            style="width:98%;margin:10px auto auto auto;resize: none;"
+                            rows="4">
+                    </textarea>
+                </td>
+                <td><button>Play</button></td>
+            </tr>
+        </table>
+    </td>
+    <td>
+        <table>
+            <tr>
+                <td style="width:85%;">
+                    <textarea
+                            id="left_task"
+                            style="width:98%;margin:10px auto auto auto;resize: none;"
+                            rows="4">
+                    </textarea>
+                </td>
+                <td><button>Play</button></td>
+            </tr>
+        </table>
+    </td>
 </tr>
 </table>
 
