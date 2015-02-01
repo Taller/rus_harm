@@ -208,3 +208,24 @@ function clearPressed() {
         removePressedStyle(pressedElements[0]);
     }
 }
+
+function playMelody() {
+    clearPressed();
+    var melody = document.getElementById('right_task').value;
+    melody.split("-").forEach(function (item) {
+        if (item.length > 2) {
+            item = item.substring(0, 2);
+        }
+
+        var rightNote;
+        if (item.charAt(1) === '#') {
+            rightNote = getElementByNoteRight(item, 1);
+        } else if (!isNaN(parseInt(item.charAt(1)))) {
+            rightNote = getElementByNoteRight(item.charAt(0), parseInt(item.charAt(1)));
+        }
+        if (rightNote != undefined) {
+            setPressedStyle(rightNote);
+        }
+        return;
+    });
+}
