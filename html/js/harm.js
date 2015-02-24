@@ -29,7 +29,7 @@ function getElementByNoteRight(note, octave) {
         return undefined;
     }
 
-    if (!(typeof octave == 'number')) {
+    if (!(typeof octave == 'number') && !isNaN(parseInt(octave))) {
         return undefined;
     }
 
@@ -71,7 +71,7 @@ function getElementByNoteLeft(note, row) {
         return undefined;
     }
 
-    if (!(typeof row == 'number')) {
+    if (!(typeof row == 'number') && !isNaN(parseInt(row))) {
         return undefined;
     }
 
@@ -212,20 +212,89 @@ function clearPressed() {
 function playMelody() {
     clearPressed();
     var melody = document.getElementById('right_task').value;
-    melody.split("-").forEach(function (item) {
-        if (item.length > 2) {
-            item = item.substring(0, 2);
-        }
-
-        var rightNote;
-        if (item.charAt(1) === '#') {
-            rightNote = getElementByNoteRight(item, 1);
-        } else if (!isNaN(parseInt(item.charAt(1)))) {
-            rightNote = getElementByNoteRight(item.charAt(0), parseInt(item.charAt(1)));
-        }
-        if (rightNote != undefined) {
-            setPressedStyle(rightNote);
-        }
-        return;
-    });
+    var note_groups = melody.split("-");
+    next(note_groups, 0);
 }
+
+function next(notes, n) {
+    var item = notes[n];
+
+    /* skip unrecognized note */
+    if (item.charAt(0) === '!') {
+        showAlert(item);
+        if (notes[n + 1]) {
+            next(notes, n + 1);
+        }
+    }
+
+    /* main recorgnition */
+    if (item.length > 2) {
+        item = item.substring(0, 2);
+    }
+
+    var rightNote;
+    if (item.charAt(1) === '#') {
+        rightNote = getElementByNoteRight(item, 1);
+    } else if (!isNaN(parseInt(item.charAt(1)))) {
+        rightNote = getElementByNoteRight(item.charAt(0), parseInt(item.charAt(1)));
+    }
+    if (rightNote != undefined) {
+        setPressedStyle(rightNote);
+    } else {
+        showAlert(item);
+    }
+
+    setTimeout(function () {
+        clearPressed();
+        if (notes[n + 1]) {
+            next(notes, n + 1);
+        }
+    }, 600);
+}
+
+function showAlert(item) {
+    var notes = '';
+    if ((typeof item == 'object') && 'notes' in item) {
+        notes = item['notes'];
+    } else if(typeof item == 'string') {
+        notes = item;
+    }
+    document.getElementById('alert').innerHTML = 'Unrecorgnized: <br>' + notes;
+    setTimeout(function () {document.getElementById('alert').innerHTML = '';}, 2000);
+}
+
+
+function play2() {
+    alert(httpGet('texts/text1.txt'));
+}
+
+/*
+*  does not work on local file
+* */
+function httpGet(theUrl) {
+    if (window.XMLHttpRequest) {
+        xmlhttp=new XMLHttpRequest();
+    }
+
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            return xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", theUrl, true );
+    xmlhttp.send();
+
+
+}
+/*
+*  Example data structure
+*  item = {
+*      notes : "A1-A2-A3,
+*      durarion : 600
+*  }
+*
+*  {A1}[8]-{R}[8]-{A1-C1}[4]
+*  {A1}[8] - 1/8 note
+*  {R}[8] - 1/8 pause
+*  {A1-C1}[4] - 1/4 play A1 and C1 together
+* */
