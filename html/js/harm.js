@@ -71,7 +71,7 @@ var cleft = {
 function getElementByNoteRight(note, octave) {
     if (note in nright) {
         var nnums = nright[note];
-        if ([1,2,3,4].indexOf(octave) != -1 && octave < nnums.length) {
+        if ([1, 2, 3, 4].indexOf(octave) != -1 && octave < nnums.length) {
             return document.getElementById('N' + nnums[octave]);
         } else {
             var quit = [];
@@ -210,13 +210,13 @@ function next(notes, n) {
     var rn, ln;
     if ((typeof item == 'object') && 'r' in item) {
         rn = item['r'];
-    } else if(typeof item == 'string') {
+    } else if (typeof item == 'string') {
         rn = item;
     }
 
     if ((typeof item == 'object') && 'l' in item) {
         ln = item['l'];
-    } else if(typeof item == 'string') {
+    } else if (typeof item == 'string') {
         ln = item;
     }
 
@@ -266,7 +266,7 @@ function showAlert(item) {
     var notes = '';
     if ((typeof item == 'object') && 'notes' in item) {
         notes = item['notes'];
-    } else if(typeof item == 'string') {
+    } else if (typeof item == 'string') {
         notes = item;
     }
     document.getElementById('alert').innerHTML = 'Unrecorgnized: <br>' + notes;
@@ -276,28 +276,28 @@ function showAlert(item) {
 }
 
 /*
-*  Example data structure
-*  item = {
-*      notes : "A1-A2-A3,
-*      durarion : 600
-*  }
-*
-*  {A1}[8]-{R}[8]-{A1-C1}[4]
-*  {A1}[8] - 1/8 note
-*  {R}[8] - 1/8 pause
-*  {A1-C1}[4] - 1/4 play A1 and C1 together
-*
-*  Also, lyrics should be included
-*
-*  [] - all package is array of commands
-*  each element contains rule for:
-*  1. right hand
-*  2. left hand
-*  3. lyrics
-*  [{}, {}, {}]
-*  {'r':'...', 'l':'...', 't' : '...'}
-*
-*  special symbols
-*  [X] - clear everything
-*  [-] - skip, do nothing
-* */
+ *  Example data structure
+ *  item = {
+ *      notes : "A1-A2-A3,
+ *      durarion : 600
+ *  }
+ *
+ *  {A1}[8]-{R}[8]-{A1-C1}[4]
+ *  {A1}[8] - 1/8 note
+ *  {R}[8] - 1/8 pause
+ *  {A1-C1}[4] - 1/4 play A1 and C1 together
+ *
+ *  Also, lyrics should be included
+ *
+ *  [] - all package is array of commands
+ *  each element contains rule for:
+ *  1. right hand
+ *  2. left hand
+ *  3. lyrics
+ *  [{}, {}, {}]
+ *  {'r':'...', 'l':'...', 't' : '...'}
+ *
+ *  special symbols
+ *  [X] - clear everything
+ *  [-] - skip, do nothing
+ * */
