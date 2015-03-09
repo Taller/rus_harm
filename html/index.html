@@ -99,10 +99,16 @@
                  id="note_sheet">
             </div>
             <div style="font-size:14pt;margin:10px auto 10px auto;height:50px;border-top:solid 1px black;">
-                <select onchange="playMelody(this)">
+                <select id="melodies" onchange="playMelody(this)">
                     <option value="stop">--</option>
-                    <option value="0001_lizaveta">Лизавета</option>
-                    <option value="0002_vologda">Вологда</option>
+                </select>
+                <br/>
+                <select id="tempos_option">
+                    <option value="stop">--</option>
+                </select>
+                <br/>
+                <select id="make_slow">
+                    <option value="stop">--</option>
                 </select>
             </div>
             <div style="font-size:14pt;margin:10px auto 10px auto;height:50px;border-top:solid 1px black;"
@@ -194,16 +200,54 @@
 </table>
 
 <script>
-    var songs = [];
-    (function () {
-        songs['0001_lizaveta'] = [
-            {'ln': 'F', 'd': 4, 't': ''},
-            {'r': 'C1-F1-A1', 'l': 'F', 'd': 4, 't': ''},
-            {'r': '', 'l': 'F', 'd': 4, 't': ''},
-            {'r': '', 'l': 'F', 'd': 4, 't': ''},
+    var songs = {};
+    songs['0001_lizaveta'] = [
+            {'Name':'Лизавета', 'Tempo' : 120},
+            {'ln':[8],'d':8},
+            {'rn':[18,8,9],'ln':[7],'d':8},
+            {'rn':[8,9],'ln':[8],'d':8},
+            {'rn':[20,21],'ln':[7,'x'],'d':16},
+            {'rn':[7,8],'ln':[7],'d':16},
+        {'rn':[19,20,'x'],'ln':[6],'d':8},
+        {'rn':[],'ln':[5],'d':8},
+        {'rn':[18,19,'x'],'ln':[6],'d':8},
+        {'rn':[],'ln':[5],'d':8},
+            {'ln':[2],'d':8},
+            {'rn':[7,8,17],'ln':[1],'d':8},
+            {'rn':[7,8],'ln':[2],'d':8},
+            {'rn':[18,19],'ln':[1,'x'],'d':16},
+            {'rn':[6,7],'ln':[1],'d':16},
+        {'rn':[18,19,'x'],'ln':[14],'d':8},
+        {'rn':[],'ln':[13],'d':8},
+        {'rn':[17,18,'x'],'ln':[14],'d':8},
+        {'rn':[],'ln':[13],'d':8},
         ];
-        songs['0002_vologda'] = 'Vologda';
-    })();
+    songs['0002_vologda'] = [{'Name':'Вологда', 'Tempo' : 120}];
+
+    var sel = document.getElementById('tempos_option');
+    for(var item in tempos) {
+        var opt = document.createElement('option');
+        opt.innerHTML = tempos[item][1] + ' [' + tempos[item][0] + ']';
+        opt.value = item
+        sel.appendChild(opt);
+    }
+
+    sel = document.getElementById('make_slow');
+    for(var i = 0; i <= 50; i += 10) {
+        var opt = document.createElement('option');
+        opt.innerHTML = 'Замедлить в ' + i + ' раз';
+        opt.value = i
+        sel.appendChild(opt);
+    }
+
+    sel = document.getElementById('melodies');
+    for(var item in songs) {
+        var opt = document.createElement('option');
+        opt.innerHTML = songs[item][0]['Name'];
+        opt.value = item;
+        sel.appendChild(opt);
+    }
+
 </script>
 </body>
 </html>

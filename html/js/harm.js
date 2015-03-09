@@ -68,6 +68,36 @@ var cleft = {
     'F7': 7
 }
 
+var tempos = {
+    'grave'          : [40,  'Grave',          'Мрачно, печально'],
+    'largo'          : [46,  'Largo',          'Долго'],
+    'lento'          : [52,  'Lento',          'Медленно'],
+    'adagio'         : [56,  'Adagio',         'Протяжно'],
+    'larghetto'      : [60,  'Larghetto',      'Довольно широко'],
+    'andante'        : [66,  'Andante',        'Умеренно'],
+    'andantino'      : [69,  'Andantino',      'Скорее, чем andante, но медленнее, чем allegretto'],
+    'sostenuto'      : [76,  'Sostenuto',      ''],
+    'commodo'        : [80,  'Commodo',        'Удобно, непринуждённо, не спеша'],
+    'maestoso'       : [84,  'Maestoso',       'Торжественно'],
+    'moderato'       : [88,  'Moderato',       'Сдержанно'],
+    'allegretto'     : [108, 'Allegretto',     'Медленнее, чем allegro, но скорее, чем andante'],
+    'animato'        : [120, 'Animato',        'Оживлённо'],
+    'allegro'        : [132, 'Allegro',        'Скоро. весело'],
+    'allegro_assai'  : [144, 'Allegro assai',  'Весьма быстро'],
+    'allegro_vivace' : [152, 'Allegro vivace', 'Значительно быстро'],
+    'vivace'         : [160, 'Vivace',         'Быстро, живо'],
+    'presto'         : [184, 'Presto',         'Быстро'],
+    'prestissimo'    : [208, 'Prestissimo',    'Очень быстро']
+}
+
+function getElementByNumRight(num) {
+    return document.getElementById('N' + num);
+}
+
+function getElementByNumLeft(num) {
+    return document.getElementById('B' + num);
+}
+
 function getElementByNoteRight(note, octave) {
     if (note in nright) {
         var nnums = nright[note];
@@ -109,9 +139,9 @@ function getElementByChordLeft(chord) {
 function markPressedRight(note, octave) {
     var el = getElementByNoteRight(note);
     if (Object.prototype.toString.call(el) === '[object Array]') {
-        for (button of el) {
+        el.map(function(button) {
             setPressedStyle(button);
-        }
+        });
     } else {
         setPressedStyle(el);
     }
@@ -120,9 +150,9 @@ function markPressedRight(note, octave) {
 function markPressedLeft(note) {
     var el = getElementByNoteLeft(note);
     if (Object.prototype.toString.call(el) === '[object Array]') {
-        for (button of el) {
+        el.map(function(button) {
             setPressedStyle(button);
-        }
+        });
     } else {
         setPressedStyle(el);
     }
@@ -209,19 +239,73 @@ function playMelody(sel) {
     var value = sel.value;
 
     clearPressed();
-    next(songs[value], 0);
+    if (value === 'stop') {
+        return;
+    }
+
+    var slowOption = document.getElementById("make_slow");
+    var optionNameK = slowOption.options[slowOption.selectedIndex].value;
+
+    var slowK = 10;
+    if (optionNameK != 'stop') {
+        slowK = parseInt(optionNameK);
+    }
+
+    var tempOption = document.getElementById("tempos_option");
+    var optionNameT = tempOption.options[tempOption.selectedIndex].value;
+    var tempo = songs[value][0]['Tempo'];
+    if (optionNameT != 'stop' && optionNameT in tempos) {
+        tempo = tempos[optionNameT][0];
+    }
+    var k = 60 / tempo * slowK * 1000;
+    next(songs[value], 0, k);
 }
 
-function next(notes, n) {
+function next(notes, n, tempo) {
     var item = notes[n];
 
-    /* main recorgnition */
-    setTimeout(function () {
-        clearPressed();
-        if (notes[n + 1]) {
-            next(notes, n + 1);
+    /* playRight */
+    var rn;
+    if ('rn' in item) {
+        rn = item['rn'];
+
+        if (Object.prototype.toString.call(rn) === '[object Array]') {
+            rn.map(function(num_note) {
+                setPressedStyle(getElementByNumRight(num_note));
+            });
         }
-    }, 600);
+    }
+
+    /* playLeft */
+    var ln;
+    if ('ln' in item) {
+        ln = item['ln'];
+
+        if (Object.prototype.toString.call(ln) === '[object Array]') {
+            ln.map(function(num_note) {
+                setPressedStyle(getElementByNumLeft(num_note));
+            });
+        }
+    }
+    var duration;
+    if ('d' in item) {
+        duration = item['d'];
+    }
+
+    setTimeout(function () {
+        if (Object.prototype.toString.call(rn) === '[object Array]'
+            && rn[rn.length - 1] != 'x') {
+            clearRight();
+        }
+        if (Object.prototype.toString.call(ln) === '[object Array]'
+            && ln[ln.length - 1] != 'x') {
+            clearLeft();
+        }
+
+        if (notes[n + 1]) {
+            next(notes, n + 1, tempo);
+        }
+    }, tempo/duration);
 }
 
 function showAlert(item) {
@@ -238,28 +322,14 @@ function showAlert(item) {
 }
 
 /*
- *  Example data structure
- *  item = {
- *      notes : "A1-A2-A3,
- *      durarion : 600
- *  }
- *
- *  {A1}[8]-{R}[8]-{A1-C1}[4]
- *  {A1}[8] - 1/8 note
- *  {R}[8] - 1/8 pause
- *  {A1-C1}[4] - 1/4 play A1 and C1 together
- *
- *  Also, lyrics should be included
- *
  *  [] - all package is array of commands
  *  each element contains rule for:
  *  1. right hand
  *  2. left hand
  *  3. lyrics
  *  [{}, {}, {}]
- *  {'r':'...', 'l':'...', 't' : '...'}
+ *  {'rn': [...], 'ln': [...], 't' : '...'}
  *
  *  special symbols
- *  [X] - clear everything
- *  [-] - skip, do nothing
+ *  'X' - clear everything
  * */
