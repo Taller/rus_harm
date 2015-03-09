@@ -41,7 +41,7 @@
 }
 
 .p_button {
-    background-color: #8888AA;
+    background-color: #9595A5;
 }
 
 .chord {
@@ -49,5 +49,13 @@
 }
 
 .p_chord {
-    background-color: #8888AA;
+    background-color: #9595A5;
+}
+
+.chord_menu_el {
+    text-align: center;
+    border: #656565 solid 1px;
+    border-radius: 5px;
+    background-color: #CDCDCD;
+    font-size:18pt;
 }

@@ -179,17 +179,30 @@ function removePressedStyle(el) {
 
 }
 
+function clearRight() {
+    var pressedElements = document.getElementById('right-kbd').getElementsByClassName('p_button');
+    while (pressedElements.length > 0) {
+        removePressedStyle(pressedElements[0]);
+    }
+}
+
+function clearLeft() {
+    /* clear buttons */
+    var pressedElements = document.getElementById('left-kbd').getElementsByClassName('p_button');
+    while (pressedElements.length > 0) {
+        removePressedStyle(pressedElements[0]);
+    }
+    /* clear chords */
+    pressedElements = document.getElementById('left-kbd').getElementsByClassName('p_chord');
+    while (pressedElements.length > 0) {
+        removePressedStyle(pressedElements[0]);
+    }
+}
+
 function clearPressed() {
     document.getElementById('current_chord').innerHTML = '';
-    var pressedElements = document.getElementById('keyboard').getElementsByClassName('p_button');
-    while (pressedElements.length > 0) {
-        removePressedStyle(pressedElements[0]);
-    }
-
-    pressedElements = document.getElementById('keyboard').getElementsByClassName('p_chord');
-    while (pressedElements.length > 0) {
-        removePressedStyle(pressedElements[0]);
-    }
+    clearRight();
+    clearLeft();
 }
 
 function playMelody(sel) {
@@ -203,57 +216,6 @@ function next(notes, n) {
     var item = notes[n];
 
     /* main recorgnition */
-    if (item.length > 2) {
-        item = item.substring(0, 2);
-    }
-
-    var rn, ln;
-    if ((typeof item == 'object') && 'r' in item) {
-        rn = item['r'];
-    } else if (typeof item == 'string') {
-        rn = item;
-    }
-
-    if ((typeof item == 'object') && 'l' in item) {
-        ln = item['l'];
-    } else if (typeof item == 'string') {
-        ln = item;
-    }
-
-    var rightNote, leftNote;
-    if (rn === '[X]') {
-        rightNote = null;
-    } else if (rn === '[-]') {
-        rightNote = null;
-    } else if (rn.charAt(1) === '#') {
-        rightNote = getElementByNoteRight(rn, 1);
-    } else if (!isNaN(parseInt(rn.charAt(1)))) {
-        rightNote = getElementByNoteRight(rn.charAt(0), parseInt(rn.charAt(1)));
-    }
-
-    if (rn === '[X]') {
-        leftNote = null;
-    } else if (rn === '[-]') {
-        leftNote = null;
-    } else if (ln.charAt(1) === '#') {
-        leftNote = getElementByNoteRight(ln, 1);
-    } else if (!isNaN(parseInt(rn.charAt(1)))) {
-        leftNote = getElementByNoteRight(ln.charAt(0), parseInt(ln.charAt(1)));
-    }
-
-    if (typeof rightNote === 'undefined') {
-        showAlert(item);
-    } else {
-        setPressedStyle(rightNote);
-    }
-
-    if (typeof leftNote === 'undefined') {
-        showAlert(item);
-    } else {
-        setPressedStyle(leftNote);
-    }
-
-
     setTimeout(function () {
         clearPressed();
         if (notes[n + 1]) {
