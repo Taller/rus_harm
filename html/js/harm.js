@@ -53,10 +53,43 @@ var nright = {
     'Ab': [2]
 }
 
+var numbynote = {
+    'D#' : 1,
+    'Eb' : 1,
+    'G#' : 2,
+    'Ab' : 2,
+    'C1' : 3,
+    'E1' : 4,
+    'G1' : 5,
+    'H1' : 6,
+    'D2' : 7,
+    'F2' : 8,
+    'A2' : 9,
+    'C3' : 10,
+    'E3' : 11,
+    'G3' : 12,
+    'H3' : 13,
+    'F#' : 14,
+    'Gb' : 14,
+    'D1' : 15,
+    'F1' : 16,
+    'A1' : 17,
+    'C2' : 18,
+    'E2' : 19,
+    'G2' : 20,
+    'H2' : 21,
+    'D3' : 22,
+    'F3' : 23,
+    'A3' : 24,
+    'C4' : 25
+}
+
 var cleft = {
     'Am': 13,
     'Dm': 15,
+    'E' : 11,
     'E7': 11,
+    'H' : 9,
     'H7': 9,
     'D' : 1,
     'D7': 1,
@@ -91,11 +124,23 @@ var tempos = {
 }
 
 function getElementByNumRight(num) {
-    return document.getElementById('N' + num);
+    if (!isNaN(parseInt(num))) {
+        return document.getElementById('N' + num);
+    } else if (num in numbynote) {
+        return document.getElementById('N' + numbynote[num]);
+    }
+
+    return undefined;
 }
 
 function getElementByNumLeft(num) {
-    return document.getElementById('B' + num);
+    if (!isNaN(parseInt(num))) {
+        return document.getElementById('B' + num);
+    } else if (num in cleft) {
+        return document.getElementById('B' + cleft[num]);
+    }
+
+    return undefined;
 }
 
 function getElementByNoteRight(note, octave) {
@@ -110,6 +155,8 @@ function getElementByNoteRight(note, octave) {
             }
             return quit;
         }
+    } else if (note in numbynote) {
+        return document.getElementById('N' + numbynote[note]);
     }
 
     return undefined;
