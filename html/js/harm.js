@@ -292,7 +292,7 @@ function playMelody(sel) {
         return;
     }
 
-    var slowOption = document.getElementById("make_slow");
+    var slowOption = document.getElementById("tempo");
     var optionNameK = slowOption.options[slowOption.selectedIndex].value;
 
     var slowK = 10;
@@ -300,14 +300,8 @@ function playMelody(sel) {
         slowK = parseInt(optionNameK);
     }
 
-    var tempOption = document.getElementById("tempos_option");
-    var optionNameT = tempOption.options[tempOption.selectedIndex].value;
-    var tempo = songs[value][0]['Tempo'];
-    if (optionNameT != 'stop' && optionNameT in tempos) {
-        tempo = tempos[optionNameT][0];
-    }
-    var k = 60 / tempo * slowK * 1000;
-    next(songs[value], 0, k);
+    var k = 480000 / slowK;
+    next(songs[value], 1, k);
 }
 
 function next(notes, n, tempo) {
@@ -393,11 +387,11 @@ function showHint(hint) {
 /*
  *  [] - all package is array of commands
  *  each element contains rule for:
- *  1. right hand
- *  2. left hand
- *  3. lyrics
+ *  1. right hand ('rn')
+ *  2. left hand  ('ln')
+ *  3. duration   ('d'), 8 means 1/8, 4 - 1/4 and so on
  *  [{}, {}, {}]
- *  {'rn': [...], 'ln': [...], 't' : '...'}
+ *  {'rn': [...], 'ln': [...], 'd' : '...'}
  *
  *  special symbols
  *  last 'x' - do not clear anything

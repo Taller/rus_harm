@@ -123,16 +123,13 @@
             </div>
             <div style="font-size:14pt;margin:10px auto 10px auto;height:50px;border-top:solid 1px black;">
                 <select id="melodies" onchange="playMelody(this)">
-                    <option value="stop">--</option>
+                    <option value="stop">-- (Мелодии)</option>
                 </select>
                 <br/>
-                <select id="tempos_option">
-                    <option value="stop">--</option>
+                <select id="tempo">
+                    <option value="stop">-- (Темп для 1/8 ноты, уд/мин)</option>
                 </select>
                 <br/>
-                <select id="make_slow">
-                    <option value="stop">--</option>
-                </select>
             </div>
             <div style="font-size:14pt;margin:10px auto 10px auto;height:50px;border-top:solid 1px black;"
                  id="alert">
@@ -225,19 +222,14 @@
 <script type="text/javascript" >
     var songs = {};
 
-    var sel = document.getElementById('tempos_option');
-    for(var item in tempos) {
+    var sel = document.getElementById('tempo');
+    for(var i = 10; i <= 250; i += 10) {
         var opt = document.createElement('option');
-        opt.innerHTML = tempos[item][1] + ' [' + tempos[item][0] + ']';
-        opt.value = item
-        sel.appendChild(opt);
-    }
-
-    sel = document.getElementById('make_slow');
-    for(var i = 0; i <= 50; i += 10) {
-        var opt = document.createElement('option');
-        opt.innerHTML = 'Замедлить в ' + i + ' раз';
-        opt.value = i
+        opt.innerHTML = 'Метроном = ' + i + ' уд./мин.';
+        opt.value = i;
+        if (i === 50) {
+            opt.selected = true;
+        }
         sel.appendChild(opt);
     }
 
@@ -252,7 +244,6 @@
         opt.value = item;
         sel.appendChild(opt);
     }
-
 </script>
 </body>
 </html>
