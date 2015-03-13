@@ -138,6 +138,8 @@ function getElementByNumLeft(num) {
         return document.getElementById('B' + num);
     } else if (num in cleft) {
         return document.getElementById('B' + cleft[num]);
+    } else if (num.length > 1 && num.charAt(0) === '-' && num.substring(1) in nleft) {
+        return getElementByNoteLeft(num.substring(1));
     }
 
     return undefined;
@@ -330,13 +332,21 @@ function next(notes, n, tempo) {
 
         if (Object.prototype.toString.call(ln) === '[object Array]') {
             ln.map(function(num_note) {
-                setPressedStyle(getElementByNumLeft(num_note));
+                var lel = getElementByNumLeft(num_note);
+                if (Object.prototype.toString.call(lel) === '[object Array]') {
+                    lel.map(function(one_el) {setPressedStyle(one_el)});
+                } else {
+                    setPressedStyle(lel);
+                }
+
             });
         }
     }
     var duration;
     if ('d' in item) {
         duration = item['d'];
+    } else {
+        duration = 8;
     }
 
     setTimeout(function () {
@@ -368,6 +378,18 @@ function showAlert(item) {
     }, 2000);
 }
 
+function showHint(hint) {
+    var el = document.getElementById('note_hint');
+    if (hint === null || hint === undefined) {
+        el.className = 'no_bg_img';
+    } else {
+        el.className = hint;
+    }
+
+}
+
+
+
 /*
  *  [] - all package is array of commands
  *  each element contains rule for:
@@ -378,5 +400,5 @@ function showAlert(item) {
  *  {'rn': [...], 'ln': [...], 't' : '...'}
  *
  *  special symbols
- *  'X' - clear everything
+ *  last 'x' - do not clear anything
  * */
