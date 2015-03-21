@@ -26,18 +26,18 @@
 }
 
 .center_margin {
-    margin-left: auto;
+    margin-left: 15px;
     margin-right: auto;
 }
 
 .button {
     border: black solid 1px;
     border-radius: 50%;
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 28px;
     text-align: center;
     vertical-align: text-bottom;
-    padding-top: 4px;
+    /*padding-top: 4px;*/
 }
 
 .p_button {
@@ -57,5 +57,46 @@
     border: #656565 solid 1px;
     border-radius: 5px;
     background-color: #CDCDCD;
-    font-size:18pt;
+    font-size: 18pt;
+}
+
+.setting {
+    text-align: center;
+    font-size: 9pt;
+}
+
+.corner_b_l {
+    width:0px;
+    position: relative;
+    top:-39px;
+}
+.corner_b_l:after, .corner_b_l:before {
+    width:0px;
+    border-bottom:39px solid black;
+    border-right:70px solid transparent;
+    position: absolute;
+    content: '';
+}
+.corner_b_l:after {
+    top:1px;
+    left:-1px;
+    border-bottom:39px solid white;
+    border-right:70px solid transparent;
+}
+.corner_u_l {
+    width:0px;
+    position: relative;
+}
+.corner_u_l:after, .corner_u_l:before {
+    width:0px;
+    border-top:39px solid black;
+    border-right:70px solid transparent;
+    position: absolute;
+    content: '';
+}
+.corner_u_l:after {
+    top:-1px;
+    left:-1px;
+    border-top:39px solid white;
+    border-right:70px solid transparent;
 }

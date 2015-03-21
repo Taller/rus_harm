@@ -188,7 +188,7 @@ function getElementByChordLeft(chord) {
 function markPressedRight(note, octave) {
     var el = getElementByNoteRight(note);
     if (Object.prototype.toString.call(el) === '[object Array]') {
-        el.map(function(button) {
+        el.map(function (button) {
             setPressedStyle(button);
         });
     } else {
@@ -199,7 +199,7 @@ function markPressedRight(note, octave) {
 function markPressedLeft(note) {
     var el = getElementByNoteLeft(note);
     if (Object.prototype.toString.call(el) === '[object Array]') {
-        el.map(function(button) {
+        el.map(function (button) {
             setPressedStyle(button);
         });
     } else {
@@ -219,7 +219,10 @@ function markNotesFor(chord) {
 
     for (note of notesInChord) {
         markPressedRight(note);
-        markPressedLeft(note);
+        // показываем дополнительные кнопки слева для аккордов
+        if (settings['show-all']) {
+            markPressedLeft(note);
+        }
     }
 }
 
@@ -313,7 +316,7 @@ function next(notes, n, tempo) {
         rn = item['rn'];
 
         if (Object.prototype.toString.call(rn) === '[object Array]') {
-            rn.map(function(num_note) {
+            rn.map(function (num_note) {
                 setPressedStyle(getElementByNumRight(num_note));
             });
         }
@@ -325,10 +328,12 @@ function next(notes, n, tempo) {
         ln = item['ln'];
 
         if (Object.prototype.toString.call(ln) === '[object Array]') {
-            ln.map(function(num_note) {
+            ln.map(function (num_note) {
                 var lel = getElementByNumLeft(num_note);
                 if (Object.prototype.toString.call(lel) === '[object Array]') {
-                    lel.map(function(one_el) {setPressedStyle(one_el)});
+                    lel.map(function (one_el) {
+                        setPressedStyle(one_el)
+                    });
                 } else {
                     setPressedStyle(lel);
                 }
@@ -356,21 +361,21 @@ function next(notes, n, tempo) {
         if (notes[n + 1]) {
             next(notes, n + 1, tempo);
         }
-    }, tempo/duration);
+    }, tempo / duration);
 }
 
-function showAlert(item) {
-    var notes = '';
-    if ((typeof item == 'object') && 'notes' in item) {
-        notes = item['notes'];
-    } else if (typeof item == 'string') {
-        notes = item;
-    }
-    document.getElementById('alert').innerHTML = 'Unrecorgnized: <br>' + notes;
-    setTimeout(function () {
-        document.getElementById('alert').innerHTML = '';
-    }, 2000);
-}
+//function showAlert(item) {
+//    var notes = '';
+//    if ((typeof item == 'object') && 'notes' in item) {
+//        notes = item['notes'];
+//    } else if (typeof item == 'string') {
+//        notes = item;
+//    }
+//    document.getElementById('alert').innerHTML = 'Unrecorgnized: <br>' + notes;
+//    setTimeout(function () {
+//        document.getElementById('alert').innerHTML = '';
+//    }, 2000);
+//}
 
 function showHint(hint) {
     var el = document.getElementById('note_hint');
@@ -379,9 +384,18 @@ function showHint(hint) {
     } else {
         el.className = hint;
     }
-
 }
 
+function changeSetting(el) {
+    if (el == null) {
+        return;
+    }
+
+    var id = el.id;
+    if (id in settings) {
+        settings[id] = !settings[id];
+    }
+}
 
 
 /*
@@ -395,4 +409,14 @@ function showHint(hint) {
  *
  *  special symbols
  *  last 'x' - do not clear anything
+ * */
+
+/* TODO / NOTES
+ * 1. сброс состояния.
+ * 2. остановку мелодии.
+ * 3. дополнительные кнопки во время мелодии
+ * 4. сексты для кнопок справа
+ * 5. септы для кнопок справа
+ * 6. футер
+ *
  * */

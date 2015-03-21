@@ -1,229 +1,375 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Русская гармонь. Раскладка нот и аккордов.</title>
     <script type="text/javascript" src="js/harm.js"></script>
     <link rel="stylesheet" type="text/css" href="css/harm.css"/>
     <link rel="stylesheet" type="text/css" href="css/notes.css"/>
+    <link rel="stylesheet" type="text/css" href="css/hint.css"/>
 </head>
 
 <body>
-
+<h1 style="text-align:center;">Русская гармонь - хромка.</h1>
 <table
         id="keyboard"
         cellpadding="0"
         cellspacing="0"
-        style="height:600px;margin:auto;">
-    <tr>
-        <td>
-            <div id="right-kbd"  style="margin-left:20px;margin-right: 20px;">
-                <div class="holder align-left">
-                    <div id="N1" class="button align-left">D#</div>
-                </div>
-                <div class="holder align-right">
-                    <div id="N14" class="button align-right">F#</div>
-                </div>
-                <div class="holder align-left">
-                    <div id="N2" class="button align-left">G#</div>
-                </div>
-                <div class="holder align-right">
-                    <div id="N15" class="button align-right"
-                         onmouseover="showHint('D1');" onmouseout="showHint();">D</div>
-                </div>
-                <div class="holder align-left">
-                    <div id="N3" class="button align-left"
-                         onmouseover="showHint('C1');" onmouseout="showHint();">C</div>
-                </div>
-                <div class="holder align-right">
-                    <div id="N16" class="button align-right"
-                         onmouseover="showHint('F1');" onmouseout="showHint();">F</div>
-                </div>
-                <div class="holder align-left">
-                    <div id="N4" class="button align-left"
-                         onmouseover="showHint('E1');" onmouseout="showHint();">E</div>
-                </div>
-                <div class="holder align-right">
-                    <div id="N17" class="button align-right"
-                         onmouseover="showHint('A1');" onmouseout="showHint();">A</div>
-                </div>
-                <div class="holder align-left">
-                    <div id="N5" class="button align-left"
-                         onmouseover="showHint('G1');" onmouseout="showHint();">G</div>
-                </div>
-                <div class="holder align-right">
-                    <div id="N18" class="button align-right"
-                         onmouseover="showHint('C2');" onmouseout="showHint();">C</div>
-                </div>
-                <div class="holder align-left">
-                    <div id="N6" class="button align-left"
-                         onmouseover="showHint('H1');" onmouseout="showHint();">H</div>
-                </div>
-                <div class="holder align-right">
-                    <div id="N19" class="button align-right"
-                         onmouseover="showHint('E2');" onmouseout="showHint();">E</div>
-                </div>
-                <div class="holder align-left">
-                    <div id="N7" class="button align-left"
-                         onmouseover="showHint('D2');" onmouseout="showHint();">D</div>
-                </div>
-                <div class="holder align-right">
-                    <div id="N20" class="button align-right"
-                         onmouseover="showHint('G2');" onmouseout="showHint();">G</div>
-                </div>
-                <div class="holder align-left">
-                    <div id="N8" class="button align-left"
-                         onmouseover="showHint('F2');" onmouseout="showHint();">F</div>
-                </div>
-                <div class="holder align-right">
-                    <div id="N21" class="button align-right"
-                         onmouseover="showHint('H2');" onmouseout="showHint();">H</div>
-                </div>
-                <div class="holder align-left">
-                    <div id="N9" class="button align-left"
-                         onmouseover="showHint('A2');" onmouseout="showHint();">A</div>
-                </div>
-                <div class="holder align-right">
-                    <div id="N22" class="button align-right"
-                         onmouseover="showHint('D3');" onmouseout="showHint();">D</div>
-                </div>
-                <div class="holder align-left">
-                    <div id="N10" class="button align-left"
-                         onmouseover="showHint('C3');" onmouseout="showHint();">C</div>
-                </div>
-                <div class="holder align-right">
-                    <div id="N23" class="button align-right"
-                         onmouseover="showHint('F3');" onmouseout="showHint();">F</div>
-                </div>
-                <div class="holder align-left">
-                    <div id="N11" class="button align-left"
-                         onmouseover="showHint('E3');" onmouseout="showHint();">E</div>
-                </div>
-                <div class="holder align-right">
-                    <div id="N24" class="button align-right"
-                         onmouseover="showHint('A3');" onmouseout="showHint();">A</div>
-                </div>
-                <div class="holder align-left">
-                    <div id="N12" class="button align-left"
-                         onmouseover="showHint('G3');" onmouseout="showHint();">G</div>
-                </div>
-                <div class="holder align-right">
-                    <div id="N25" class="button align-right"
-                         onmouseover="showHint('C4_p');" onmouseout="showHint();">C</div>
-                </div>
-                <div class="holder align-left">
-                    <div id="N13" class="button align-left"
-                         onmouseover="showHint('H3');" onmouseout="showHint();">H</div>
-                </div>
+        style="height:600px;margin-left:auto;margin-right:auto;">
+<tr>
+<td style="height:598px;border-top:1px solid black;border-bottom:1px solid black;">
+    <div class="corner_u_l"></div>
+    <div id="right-kbd"
+         style="height:520px;padding-left:20px;margin-right:20px;
+         border-left:1px solid black;margin-top:39px;margin-bottom:39px;">
+        <div class="holder align-left">
+            <div id="N1" class="button align-left">D#</div>
+        </div>
+        <div class="holder align-right">
+            <div id="N14" class="button align-right">F#</div>
+        </div>
+        <div class="holder align-left">
+            <div id="N2" class="button align-left">G#</div>
+        </div>
+        <div class="holder align-right">
+            <div id="N15" class="button align-right"
+                 onmouseover="showHint('D1');" onmouseout="showHint();">D
             </div>
-        </td>
-        <td style="border:solid 1px black;width:250px;">
-            <div style="font-size:14pt;margin:10px auto 10px auto;height:50px;border-top:solid 1px black;"
-                 id="note_hint">
+        </div>
+        <div class="holder align-left">
+            <div id="N3" class="button align-left"
+                 onmouseover="showHint('C1');" onmouseout="showHint();">C
             </div>
-            <div style="font-size:14pt;margin:10px auto 10px auto;height:50px;border-top:solid 1px black;">
-                <select id="melodies" onchange="playMelody(this)">
-                    <option value="stop">-- (Мелодии)</option>
-                </select>
-                <br/>
-                <select id="tempo">
-                    <option value="stop">-- (Темп для 1/8 ноты, уд/мин)</option>
-                </select>
-                <br/>
+        </div>
+        <div class="holder align-right">
+            <div id="N16" class="button align-right"
+                 onmouseover="showHint('F1');" onmouseout="showHint();">F
             </div>
-            <div style="font-size:14pt;margin:10px auto 10px auto;height:50px;border-top:solid 1px black;"
-                 id="alert">
+        </div>
+        <div class="holder align-left">
+            <div id="N4" class="button align-left"
+                 onmouseover="showHint('E1');" onmouseout="showHint();">E
             </div>
-            <div style="text-align: center;font-size:34pt;margin:10px auto 10px auto;height:50px;border-top:solid 1px black;"
-                 id="current_chord">
+        </div>
+        <div class="holder align-right">
+            <div id="N17" class="button align-right"
+                 onmouseover="showHint('A1');" onmouseout="showHint();">A
             </div>
-            <div style="width: 100%;">
-                <div class="chord_menu_el" onClick="markNotesFor('C');">C</div>
-                <div class="chord_menu_el" onClick="markNotesFor('Em');">Em</div>
-                <div class="chord_menu_el" onClick="markNotesFor('G');">G</div>
-                <div class="chord_menu_el" onClick="markNotesFor('H7');">H7</div>
-                <div class="chord_menu_el" onClick="markNotesFor('Dm');">Dm</div>
-                <div class="chord_menu_el" onClick="markNotesFor('F');">F</div>
-                <div class="chord_menu_el" onClick="markNotesFor('Am');">Am</div>
-                <div class="chord_menu_el" onClick="markNotesFor('E7');">E7</div>
-                <div class="chord_menu_el" onClick="markNotesFor('D');">D</div>
-                <div class="chord_menu_el" onClick="markNotesFor('A7');">A7</div>
+        </div>
+        <div class="holder align-left">
+            <div id="N5" class="button align-left"
+                 onmouseover="showHint('G1');" onmouseout="showHint();">G
             </div>
+        </div>
+        <div class="holder align-right">
+            <div id="N18" class="button align-right"
+                 onmouseover="showHint('C2');" onmouseout="showHint();">C
+            </div>
+        </div>
+        <div class="holder align-left">
+            <div id="N6" class="button align-left"
+                 onmouseover="showHint('H1');" onmouseout="showHint();">H
+            </div>
+        </div>
+        <div class="holder align-right">
+            <div id="N19" class="button align-right"
+                 onmouseover="showHint('E2');" onmouseout="showHint();">E
+            </div>
+        </div>
+        <div class="holder align-left">
+            <div id="N7" class="button align-left"
+                 onmouseover="showHint('D2');" onmouseout="showHint();">D
+            </div>
+        </div>
+        <div class="holder align-right">
+            <div id="N20" class="button align-right"
+                 onmouseover="showHint('G2');" onmouseout="showHint();">G
+            </div>
+        </div>
+        <div class="holder align-left">
+            <div id="N8" class="button align-left"
+                 onmouseover="showHint('F2');" onmouseout="showHint();">F
+            </div>
+        </div>
+        <div class="holder align-right">
+            <div id="N21" class="button align-right"
+                 onmouseover="showHint('H2');" onmouseout="showHint();">H
+            </div>
+        </div>
+        <div class="holder align-left">
+            <div id="N9" class="button align-left"
+                 onmouseover="showHint('A2');" onmouseout="showHint();">A
+            </div>
+        </div>
+        <div class="holder align-right">
+            <div id="N22" class="button align-right"
+                 onmouseover="showHint('D3');" onmouseout="showHint();">D
+            </div>
+        </div>
+        <div class="holder align-left">
+            <div id="N10" class="button align-left"
+                 onmouseover="showHint('C3');" onmouseout="showHint();">C
+            </div>
+        </div>
+        <div class="holder align-right">
+            <div id="N23" class="button align-right"
+                 onmouseover="showHint('F3');" onmouseout="showHint();">F
+            </div>
+        </div>
+        <div class="holder align-left">
+            <div id="N11" class="button align-left"
+                 onmouseover="showHint('E3');" onmouseout="showHint();">E
+            </div>
+        </div>
+        <div class="holder align-right">
+            <div id="N24" class="button align-right"
+                 onmouseover="showHint('A3');" onmouseout="showHint();">A
+            </div>
+        </div>
+        <div class="holder align-left">
+            <div id="N12" class="button align-left"
+                 onmouseover="showHint('G3');" onmouseout="showHint();">G
+            </div>
+        </div>
+        <div class="holder align-right">
+            <div id="N25" class="button align-right"
+                 onmouseover="showHint('C4_p');" onmouseout="showHint();">C
+            </div>
+        </div>
+        <div class="holder align-left">
+            <div id="N13" class="button align-left"
+                 onmouseover="showHint('H3');" onmouseout="showHint();">H
+            </div>
+        </div>
+    </div>
+    <div class="corner_b_l"></div>
+</td>
+<td style="height:598px;border:solid 1px black;width:150px;">
+    <div style="text-align: center;font-size:34pt;margin:10px auto 10px auto;height:50px;border-top:solid 1px black;"
+         id="current_chord">
+    </div>
+    <div style="font-size:14pt;margin:10px auto 10px auto;height:50px;border-top:solid 1px black;"
+         id="note_hint">
+    </div>
+</td>
+<td style="height:598px;width:350px;">
+    <div style="height:34px;background-color:#EEEEEE;"></div>
+    <div style="height:530px;font-size:14pt;">
+        <select id="tempo" style="width: 100%;">
+            <option value="stop">-- (Темп для 1/8 ноты, уд/мин)</option>
+        </select>
+        <select size="29" style="width: 100%;" id="melodies" onchange="playMelody(this)"></select>
+    </div>
+    <div style="height:34px;background-color:#EEEEEE;"></div>
+    <!--<div style="border:solid 1px black;" onClick="clearPressed();">Clear!</div>-->
+</td>
+<td style="height:598px;width:250px;border:solid 1px black;">
+    <div style="margin: 5px;height: 89px;">
+        <input id="show-all" type="checkbox"  onchange="changeSetting(this)" checked>
+        <label for="show-all">
+            <span class="setting">Показывать дополнительные ноты к аккорду в басу.</span>
+        </label>
+        <hr style="margin-top:1px;margin-bottom:1px;"/>
+        <input id="show-7" type="checkbox" onchange="changeSetting(this)">
+        <label for="show-7">
+            <span class="setting">Показывать ноты к септ-аккорду-7 справа.</span>
+        </label>
+        <hr style="margin-top:1px;margin-bottom:1px;"/>
+        <input id="show-6" type="checkbox" onchange="changeSetting(this)">
+        <label for="show-6" onclick="changeSetting(this.control);">
+            <span class="setting">Показывать ноты к секст-аккорду-6 справа.</span>
+        </label>
 
-            <br/>
-            <!--<div style="border:solid 1px black;" onClick="clearPressed();">Clear!</div>-->
-        </td>
-        <td>
-            <div id="left-kbd" style="margin-left:20px;margin-right: 20px;width:140px;clear:both;">
-                <div class="holder">
-                    <div id="B17" class="button float_l">F#</div>
-                    <div id="B1" class="button chord float_r">D</div>
-                </div>
-                <div class="holder">
-                    <div id="B9" class="button chord center_margin">H7</div>
-                </div>
-                <div class="holder">
-                    <div id="B18" class="button float_l">A</div>
-                    <div id="B2" class="button float_r">D</div>
-                </div>
-                <div class="holder">
-                    <div id="B10" class="button center_margin">H</div>
-                </div>
-                <div class="holder">
-                    <div id="B19" class="button float_l">H</div>
-                    <div id="B3" class="button chord float_r">G</div>
-                </div>
-                <div class="holder">
-                    <div id="B11" class="button chord center_margin">E7</div>
-                </div>
-                <div class="holder">
-                    <div id="B20" class="button float_l">C</div>
-                    <div id="B4" class="button float_r">G</div>
-                </div>
-                <div class="holder">
-                    <div id="B12" class="button center_margin">E</div>
-                </div>
-                <div class="holder">
-                    <div id="B21" class="button float_l">D</div>
-                    <div id="B5" class="button chord float_r">C</div>
-                </div>
-                <div class="holder">
-                    <div id="B13" class="button chord center_margin">Am</div>
-                </div>
-                <div class="holder">
-                    <div id="B22" class="button float_l">E</div>
-                    <div id="B6" class="button float_r">C</div>
-                </div>
-                <div class="holder">
-                    <div id="B14" class="button center_margin">A</div>
-                </div>
-                <div class="holder">
-                    <div id="B23" class="button float_l">F</div>
-                    <div id="B7" class="button chord float_r">F</div>
-                </div>
-                <div class="holder">
-                    <div id="B15" class="button chord center_margin">Dm</div>
-                </div>
-                <div class="holder">
-                    <div id="B24" class="button float_l">G</div>
-                    <div id="B8" class="button float_r">F</div>
-                </div>
-                <div class="holder">
-                    <div id="B16" class="button center_margin">D</div>
-                </div>
-                <div class="holder">
-                    <div id="B25" class="button float_l">A</div>
-                </div>
+    </div>
+    <div id="left-kbd"
+         style="margin-left:80px;width:120px;height:338px;clear:both;border:solid 1px black;padding: 30px;">
+        <div class="holder">
+            <span id="B17"
+                 class="hint--top hint--success button float_l"
+                 data-hint="Бас F# / фа-диез">
+                F#
+            </span>
+            <span id="B1"
+                 class="hint--top hint--success button chord float_r"
+                 data-hint="Аккорд D / ре-мажор"
+                 onclick="markNotesFor('D');">
+                D
+            </span>
+        </div>
+        <div class="holder">
+            <span id="B9"
+                  class="hint--top hint--success button chord center_margin"
+                  data-hint="Аккорд H7 / си-септ"
+                  onclick="markNotesFor('H7');">
+                H7
+            </span>
+        </div>
+        <div class="holder">
+            <span id="B18"
+                 class="hint--top hint--success button float_l"
+                 data-hint="Бас A / ля">
+                A
+            </span>
+            <span id="B2"
+                 class="hint--top hint--success button float_r"
+                 data-hint="Бас D / ре">
+                D
+            </span>
+        </div>
+        <div class="holder">
+            <span id="B10"
+                  class="hint--top hint--success button center_margin"
+                  data-hint="Бас H / си">
+                H
+            </span>
+        </div>
+        <div class="holder">
+            <span id="B19"
+                 class="hint--top hint--success button float_l"
+                 data-hint="Бас H / си">
+                H
+            </span>
+            <span id="B3"
+                 class="hint--top hint--success button chord float_r"
+                 data-hint="Аккорд G / соль-мажор"
+                 onclick="markNotesFor('G');">
+                G
+            </span>
+        </div>
+        <div class="holder">
+            <span id="B11"
+                  class="hint--top hint--success button chord center_margin"
+                  data-hint="Аккорд E7 / ми-септ"
+                  onclick="markNotesFor('E7');">
+                E7
+            </span>
+        </div>
+        <div class="holder">
+            <span id="B20"
+                 class="hint--top hint--success button float_l"
+                 data-hint="Бас C / до">
+                C
+            </span>
+            <span id="B4"
+                 class="hint--top hint--success button float_r"
+                 data-hint="Бас G / соль">
+                G
+            </span>
+        </div>
+        <div class="holder">
+            <span id="B12"
+                  class="hint--top hint--success button center_margin"
+                  data-hint="Бас E / ми">
+                E
+            </span>
+        </div>
+        <div class="holder">
+            <span id="B21"
+                 class="hint--top hint--success button float_l"
+                 data-hint="Бас D / ре">
+                D
+            </span>
+            <div id="B5"
+                 class="hint--top hint--success button chord float_r"
+                 data-hint="Аккорд C / до-мажор"
+                 onclick="markNotesFor('C');">
+                C
             </div>
-        </td>
-    </tr>
+        </div>
+        <div class="holder">
+            <span id="B13"
+                  class="hint--top hint--success button chord center_margin"
+                  data-hint="Аккорд Am / ля-минор"
+                  onclick="markNotesFor('Am');">
+                Am
+            </span>
+        </div>
+        <div class="holder">
+            <span id="B22"
+                 class="hint--top hint--success button float_l"
+                 data-hint="Бас E / ми">
+                E
+            </span>
+            <div id="B6"
+                 class="hint--top hint--success button float_r"
+                 data-hint="Бас C / до">
+                C
+            </div>
+        </div>
+        <div class="holder">
+            <span id="B14"
+                  class="hint--top hint--success button center_margin"
+                  data-hint="Бас A / ля">
+                A
+            </span>
+        </div>
+        <div class="holder">
+            <span id="B23"
+                 class="hint--top hint--success button float_l"
+                 data-hint="Бас F / фа">
+                F
+            </span>
+            <div id="B7"
+                 class="hint--top hint--success button chord float_r"
+                 data-hint="Аккорд F / фа-мажор"
+                 onclick="markNotesFor('F');">
+                F
+            </div>
+        </div>
+        <div class="holder">
+            <span id="B15"
+                  class="hint--top hint--success button chord center_margin"
+                  data-hint="Аккорд Dm / ре-минор"
+                  onclick="markNotesFor('Dm');">
+                    Dm
+            </span>
+        </div>
+        <div class="holder">
+            <span id="B24"
+                 class="hint--top hint--success button float_l"
+                 data-hint="Бас G / соль">
+                G
+            </span>
+            <div id="B8"
+                 class="hint--top hint--success button float_r"
+                 data-hint="Бас F / фа">
+                F
+            </div>
+        </div>
+        <div class="holder">
+            <span id="B16"
+                 class="hint--top hint--success button center_margin"
+                 data-hint="Бас D / ре">
+                D
+            </span>
+        </div>
+        <div class="holder">
+            <span id="B25"
+                  class="hint--top hint--success button float_l"
+                  data-hint="Бас A / ля">
+                A
+            </span>
+        </div>
+    </div>
+    <div style="margin: 5px;height: 89px;">
+        &nbsp;
+    </div>
+</td>
+</tr>
 </table>
-
-<script type="text/javascript" >
+<!--<div class="page-footer">-->
+    <!--by Ivan A. Ivanchikov (aka Taller)-->
+<!--</div>-->
+<script type="text/javascript">
+    var settings = {
+        'show-all' : true,
+        'show-7'   : false,
+        'show-6'   : false,
+    };
     var songs = {};
 
     var sel = document.getElementById('tempo');
-    for(var i = 10; i <= 250; i += 10) {
+    for (var i = 10; i <= 250; i += 10) {
         var opt = document.createElement('option');
         opt.innerHTML = 'Метроном = ' + i + ' уд./мин.';
         opt.value = i;
@@ -236,14 +382,15 @@
 </script>
 <script type="text/javascript" src="songs/0001_lizaveta.js"></script>
 <script type="text/javascript" src="songs/0002_vologda.js"></script>
-<script type="text/javascript" >
+<script type="text/javascript">
     var sel = document.getElementById('melodies');
-    for(var item in songs) {
+    for (var item in songs) {
         var opt = document.createElement('option');
         opt.innerHTML = songs[item][0]['Name'];
         opt.value = item;
         sel.appendChild(opt);
     }
 </script>
+
 </body>
 </html>
