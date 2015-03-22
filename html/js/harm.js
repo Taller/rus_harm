@@ -176,6 +176,7 @@ function clearPressed() {
 
 function playMelody(sel) {
     var value = sel.value;
+    settings['stop'] = false;
 
     clearPressed();
     if (value === 'stop') {
@@ -245,24 +246,11 @@ function next(notes, n, tempo) {
             clearLeft();
         }
 
-        if (notes[n + 1]) {
+        if (notes[n + 1] && !settings['stop']) {
             next(notes, n + 1, tempo);
         }
     }, tempo / duration);
 }
-
-//function showAlert(item) {
-//    var notes = '';
-//    if ((typeof item == 'object') && 'notes' in item) {
-//        notes = item['notes'];
-//    } else if (typeof item == 'string') {
-//        notes = item;
-//    }
-//    document.getElementById('alert').innerHTML = 'Unrecorgnized: <br>' + notes;
-//    setTimeout(function () {
-//        document.getElementById('alert').innerHTML = '';
-//    }, 2000);
-//}
 
 function showHint(hint) {
     var el = document.getElementById('note_hint');
@@ -291,6 +279,10 @@ function changeSetting(el) {
     }
 }
 
+function stopMelody() {
+    settings['stop'] = true;
+}
+
 
 /*
  *  [] - all package is array of commands
@@ -307,12 +299,13 @@ function changeSetting(el) {
 
 /* TODO / NOTES
  * -1.* сброс состояния.
- * 2. остановку мелодии.
+ * -2.* остановку мелодии.
  * 3. дополнительные кнопки во время мелодии
  * -4.* сексты для кнопок справа
  * -5.* септы для кнопок справа
  * -6.* футер
  * 7. предпоказ
  * 8. сделать настройки в виде меню
+ * 9. перерисовать ноты для клавиш
  *
  * */

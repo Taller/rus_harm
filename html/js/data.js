@@ -147,6 +147,7 @@ var settings = {
     'show-all' : true,
     'show-7'   : false,
     'show-6'   : false,
+    'stop'     : false,
 };
 
 var songs = {};
