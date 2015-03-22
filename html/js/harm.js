@@ -86,11 +86,17 @@ function markNotesFor(chord) {
     clearPressed();
     document.getElementById('current_chord').innerHTML = chord;
 
-    var notesInChord = chords[chord];
     var el = getElementByChordLeft(chord);
     if (el != undefined) {
         setPressedStyle(el);
     }
+
+    if (settings['show-7']) {
+        chord = chord + '7';
+    } else if (settings['show-6']) {
+        chord = chord + '6';
+    }
+    var notesInChord = chords[chord];
 
     for (note of notesInChord) {
         markPressedRight(note);
@@ -272,9 +278,16 @@ function changeSetting(el) {
         return;
     }
 
+    settings['show-6'] = false;
+    settings['show-7'] = false;
+
     var id = el.id;
+    if (id === 'clean-chord') {
+        return;
+    }
+
     if (id in settings) {
-        settings[id] = !settings[id];
+        settings[id] = true;
     }
 }
 
@@ -296,9 +309,10 @@ function changeSetting(el) {
  * -1.* сброс состояния.
  * 2. остановку мелодии.
  * 3. дополнительные кнопки во время мелодии
- * 4. сексты для кнопок справа
- * 5. септы для кнопок справа
- * 6. футер
+ * -4.* сексты для кнопок справа
+ * -5.* септы для кнопок справа
+ * -6.* футер
  * 7. предпоказ
+ * 8. сделать настройки в виде меню
  *
  * */
