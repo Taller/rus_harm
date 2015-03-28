@@ -123,35 +123,56 @@ function setPressedStyle(el) {
         && currentClassName.indexOf('chord') == -1
         && currentClassName.indexOf('p_chord') == -1) {
         el.className = currentClassName + ' p_button';
-    }
-
-    if (currentClassName.indexOf('p_button') == -1
+    } else if (currentClassName.indexOf('p_button') == -1
         && currentClassName.indexOf('chord') != -1
         && currentClassName.indexOf('p_chord') == -1) {
         el.className = currentClassName.replace('chord', 'p_chord');
     }
 }
 
+function setPreviewStyle(el) {
+    if (el === null || el === undefined) {
+        return;
+    }
+
+    var currentClassName = el.className;
+    if (currentClassName.indexOf('button_preview') == -1) {
+        el.className = currentClassName.replace('button', 'button_preview');
+    }
+}
+
 function removePressedStyle(el) {
-    if (el === undefined) {
+    if (el === null || el === undefined) {
         return;
     }
 
     var currentClassName = el.className;
     if (currentClassName.indexOf('p_button') > -1) {
         el.className = currentClassName.replace(' p_button', '');
-    }
-
-    if (currentClassName.indexOf('p_chord') > -1) {
+    } else if (currentClassName.indexOf('p_chord') > -1) {
         el.className = currentClassName.replace('p_chord', 'chord');
     }
+}
 
+function removePreviewStyle(el) {
+    if (el === null || el === undefined) {
+        return;
+    }
+
+    var currentClassName = el.className;
+    if (currentClassName.indexOf('button_preview') > -1) {
+        el.className = currentClassName.replace('button_preview', 'button');
+    }
 }
 
 function clearRight() {
     var pressedElements = document.getElementById('right-kbd').getElementsByClassName('p_button');
     while (pressedElements.length > 0) {
         removePressedStyle(pressedElements[0]);
+    }
+    var pressedElements = document.getElementById('right-kbd').getElementsByClassName('preview');
+    while (pressedElements.length > 0) {
+        removePreviewStyle(pressedElements[0]);
     }
 }
 
@@ -165,6 +186,11 @@ function clearLeft() {
     pressedElements = document.getElementById('left-kbd').getElementsByClassName('p_chord');
     while (pressedElements.length > 0) {
         removePressedStyle(pressedElements[0]);
+    }
+    /* clear previews */
+    pressedElements = document.getElementById('left-kbd').getElementsByClassName('preview');
+    while (pressedElements.length > 0) {
+        removePreviewStyle(pressedElements[0]);
     }
 }
 
@@ -199,36 +225,15 @@ function next(notes, n, tempo) {
     var item = notes[n];
 
     /* playRight */
-    var rn;
-    if ('rn' in item) {
-        rn = item['rn'];
-
-        if (Object.prototype.toString.call(rn) === '[object Array]') {
-            rn.map(function (num_note) {
-                setPressedStyle(getElementByNumRight(num_note));
-            });
-        }
-    }
-
+    var rn = markRightFor(item, 'melody');
     /* playLeft */
-    var ln;
-    if ('ln' in item) {
-        ln = item['ln'];
-
-        if (Object.prototype.toString.call(ln) === '[object Array]') {
-            ln.map(function (num_note) {
-                var lel = getElementByNumLeft(num_note);
-                if (Object.prototype.toString.call(lel) === '[object Array]') {
-                    lel.map(function (one_el) {
-                        setPressedStyle(one_el)
-                    });
-                } else {
-                    setPressedStyle(lel);
-                }
-
-            });
-        }
+    var ln = markLeftFor(item, 'melody');
+    /* set previews */
+    if (notes[n + 1]) {
+        markRightFor(notes[(n + 1)], 'preview');
+        markLeftFor(notes[(n + 1)], 'preview');
     }
+
     var duration;
     if ('d' in item) {
         duration = item['d'];
@@ -252,6 +257,67 @@ function next(notes, n, tempo) {
     }, tempo / duration);
 }
 
+function markRightFor(item, mode) {
+    /* playRight */
+    var rn;
+    if ('rn' in item) {
+        rn = item['rn'];
+
+        if (Object.prototype.toString.call(rn) === '[object Array]'
+            && mode === 'melody') {
+            rn.map(function (num_note) {
+                removePreviewStyle(getElementByNumRight(num_note));
+                setPressedStyle(getElementByNumRight(num_note));
+            });
+        } else if (Object.prototype.toString.call(rn) === '[object Array]'
+            && mode === 'preview') {
+            rn.map(function (num_note) {
+                setPreviewStyle(getElementByNumRight(num_note));
+            });
+        }
+    }
+
+    return rn;
+}
+
+function markLeftFor(item, mode) {
+    /* playLeft */
+    var ln;
+    if ('ln' in item) {
+        ln = item['ln'];
+
+        if (Object.prototype.toString.call(ln) === '[object Array]'
+            && mode === 'melody') {
+            ln.map(function (num_note) {
+                var lel = getElementByNumLeft(num_note);
+                if (Object.prototype.toString.call(lel) === '[object Array]') {
+                    lel.map(function (one_el) {
+                        removePreviewStyle(one_el);
+                        setPressedStyle(one_el);
+                    });
+                } else {
+                    removePreviewStyle(lel);
+                    setPressedStyle(lel);
+                }
+            });
+        } else if (Object.prototype.toString.call(ln) === '[object Array]'
+            && mode === 'preview') {
+            ln.map(function (num_note) {
+                var lel = getElementByNumLeft(num_note);
+                if (Object.prototype.toString.call(lel) === '[object Array]') {
+                    lel.map(function (one_el) {
+                        setPreviewStyle(one_el)
+                    });
+                } else {
+                    setPreviewStyle(lel);
+                }
+            });
+        }
+    }
+
+    return ln;
+}
+
 function showHint(hint) {
     var el = document.getElementById('note_hint');
     if (hint === null || hint === undefined) {
@@ -269,7 +335,7 @@ function changeSetting(el) {
     settings['show-6'] = false;
     settings['show-7'] = false;
 
-    var id = el.id;
+    var id = el.options[el.selectedIndex].value;
     if (id === 'clean-chord') {
         return;
     }
@@ -300,7 +366,8 @@ function stopMelody() {
 /* TODO / NOTES
  * -1.* сброс состояния.
  * -2.* остановку мелодии.
- * 3. дополнительные кнопки во время мелодии
+ * -3.* дополнительные кнопки во время мелодии -- не пойдет,
+ * т.к. не знаем какая именно кнопка нужна, либо писать номер
  * -4.* сексты для кнопок справа
  * -5.* септы для кнопок справа
  * -6.* футер

@@ -173,20 +173,13 @@
             <span class="setting">Дополнительные ноты к аккорду в басу.</span>
         </label>
         <hr style="margin-top:1px;margin-bottom:1px;"/>
-        <input id="clean-chord" name="6or7" type="radio" onchange="changeSetting(this)" checked>
-        <label for="clean-chord">
-            <span class="setting">Чистые аккорды.</span>
-        </label>
-        <hr style="margin-top:1px;margin-bottom:1px;"/>
-        <input id="show-7" name="6or7" type="radio" onchange="changeSetting(this)">
-        <label for="show-7">
-            <span class="setting">Ноты к септ-аккорду-7 справа.</span>
-        </label>
-        <hr style="margin-top:1px;margin-bottom:1px;"/>
-        <input id="show-6" name="6or7" type="radio" onchange="changeSetting(this)">
-        <label for="show-6">
-            <span class="setting">Ноты к секст-аккорду-6 справа.</span>
-        </label>
+        <div class="setting">
+            <select onchange="changeSetting(this);" >
+                <option value="clean-chord">Чистые аккорды.</option>
+                <option value="show-7">Ноты к септ-аккорду-7 справа.</option>
+                <option value="show-6">Ноты к секст-аккорду-6 справа.</option>
+            </select>
+        </div>
     </div>
     <div id="left-kbd"
          style="margin-left:80px;width:120px;height:338px;clear:both;border:solid 1px black;padding: 30px;

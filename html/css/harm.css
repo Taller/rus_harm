@@ -7,13 +7,14 @@ html, body {
     min-height: 100%;
     margin-bottom: -64px;
 }
+
 * html .page-wrapper {
     height: 100%;
 }
+
 .page-buffer {
     height: 30px;
 }
-
 
 .align-right {
     text-align: right;
@@ -47,16 +48,16 @@ html, body {
 }
 
 .button {
-    border: black solid 1px;
+    border: #777777 solid 2px;
     border-radius: 50%;
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     text-align: center;
     vertical-align: text-bottom;
 }
 
 .p_button {
-    background-color: #9595A5;
+    background-color: #FF95A5;
 }
 
 .chord {
@@ -64,7 +65,7 @@ html, body {
 }
 
 .p_chord {
-    background-color: #9595A5;
+    background-color: #FF95A5;
 }
 
 .chord_menu_el {
@@ -78,4 +79,15 @@ html, body {
 .setting {
     text-align: center;
     font-size: 9pt;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button_preview {
+    border: green solid 2px;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    vertical-align: text-bottom;
 }
