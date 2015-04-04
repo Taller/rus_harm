@@ -174,7 +174,7 @@
         </label>
         <hr style="margin-top:1px;margin-bottom:1px;"/>
         <div class="setting">
-            <select onchange="changeSetting(this);" >
+            <select id="show-right" onchange="changeSetting(this);" >
                 <option value="clean-chord">Чистые аккорды.</option>
                 <option value="show-7">Ноты к септ-аккорду-7 справа.</option>
                 <option value="show-6">Ноты к секст-аккорду-6 справа.</option>
@@ -370,11 +370,12 @@
         </div>
     </div>
     <div style="margin: 5px;height: 89px;">
-        <div style="border:solid 1px black;text-align:center;width:90%;margin-left:auto;margin-right:auto;margin-bottom:4px;"
+        <div style="border:solid 1px black;text-align:center;width:90%;margin-left:auto;margin-right:auto;cursor:pointer;
+                    margin-bottom:4px;"
              onClick="clearPressed();">
             Очистить
         </div>
-        <div style="border:solid 1px black;text-align:center;width:90%;margin-left:auto;margin-right:auto;"
+        <div style="border:solid 1px black;text-align:center;width:90%;margin-left:auto;margin-right:auto;cursor:pointer;"
              onClick="stopMelody();">
             Остановить мелодию
         </div>
@@ -392,21 +393,38 @@
 </html>
 <script type="text/javascript">
     var sel = document.getElementById('tempo');
-    for (var i = 10; i <= 250; i += 10) {
+    for (var i = 5; i <= 20; i++) {
         var opt = document.createElement('option');
         opt.innerHTML = 'Метроном = ' + i + ' уд./мин.';
         opt.value = i;
-        if (i === 50) {
+        if (i === settings['metronom']) {
+            opt.selected = true;
+        }
+        sel.appendChild(opt);
+    }
+    for (var i = 30; i <= 250; i += 10) {
+        var opt = document.createElement('option');
+        opt.innerHTML = 'Метроном = ' + i + ' уд./мин.';
+        opt.value = i;
+        if (i === settings['metronom']) {
             opt.selected = true;
         }
         sel.appendChild(opt);
     }
 
 </script>
+<!-- Добавляем мелодии -->
+<script type="text/javascript" src="songs/0000_test.js"></script>
 <script type="text/javascript" src="songs/0001_lizaveta.js"></script>
 <script type="text/javascript" src="songs/0002_vologda.js"></script>
 <script type="text/javascript">
     var sel = document.getElementById('melodies');
+
+    var opt = document.createElement('option');
+    opt.innerHTML = '--== Остановить мелодию ==--';
+    opt.value = 'stop';
+    sel.appendChild(opt);
+
     for (var item in songs) {
         var opt = document.createElement('option');
         opt.innerHTML = songs[item][0]['Name'];

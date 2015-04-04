@@ -83,6 +83,10 @@ function markPressedLeft(note) {
 }
 
 function markNotesFor(chord) {
+    if (!settings['stop']) {
+        return;
+    }
+
     clearPressed();
     document.getElementById('current_chord').innerHTML = chord;
 
@@ -108,6 +112,10 @@ function markNotesFor(chord) {
 }
 
 function markNotesForBass(bass, button) {
+    if (!settings['stop']) {
+        return;
+    }
+
     clearPressed();
     markPressedRight(bass);
     setPressedStyle(button);
@@ -170,7 +178,7 @@ function clearRight() {
     while (pressedElements.length > 0) {
         removePressedStyle(pressedElements[0]);
     }
-    var pressedElements = document.getElementById('right-kbd').getElementsByClassName('preview');
+    var pressedElements = document.getElementById('right-kbd').getElementsByClassName('button_preview');
     while (pressedElements.length > 0) {
         removePreviewStyle(pressedElements[0]);
     }
@@ -188,24 +196,28 @@ function clearLeft() {
         removePressedStyle(pressedElements[0]);
     }
     /* clear previews */
-    pressedElements = document.getElementById('left-kbd').getElementsByClassName('preview');
+    pressedElements = document.getElementById('left-kbd').getElementsByClassName('button_preview');
     while (pressedElements.length > 0) {
         removePreviewStyle(pressedElements[0]);
     }
 }
 
 function clearPressed() {
+    if (!settings['stop']) {
+        return;
+    }
+
     document.getElementById('current_chord').innerHTML = '';
     clearRight();
     clearLeft();
 }
 
 function playMelody(sel) {
-    var value = sel.value;
-    settings['stop'] = false;
-
     clearPressed();
+
+    var value = sel.value;
     if (value === 'stop') {
+        settings['stop'] = true;
         return;
     }
 
@@ -218,7 +230,9 @@ function playMelody(sel) {
     }
 
     var k = 480000 / slowK;
+    settings['stop'] = false;
     next(songs[value], 1, k);
+    clearPressed();
 }
 
 function next(notes, n, tempo) {
@@ -253,11 +267,18 @@ function next(notes, n, tempo) {
 
         if (notes[n + 1] && !settings['stop']) {
             next(notes, n + 1, tempo);
+        } else {
+            clearPressed();
+            settings['stop'] = true;
         }
     }, tempo / duration);
 }
 
 function markRightFor(item, mode) {
+    if (item === undefined) {
+        return undefined;
+    }
+
     /* playRight */
     var rn;
     if ('rn' in item) {
@@ -332,16 +353,21 @@ function changeSetting(el) {
         return;
     }
 
-    settings['show-6'] = false;
-    settings['show-7'] = false;
-
-    var id = el.options[el.selectedIndex].value;
-    if (id === 'clean-chord') {
+    if (el.type === 'checkbox' && el.id === 'show-all') {
+        settings['show-all'] = !settings['show-all'];
         return;
-    }
+    } else if (el.type === 'select-one' && el.id === 'show-right') {
+        settings['show-6'] = false;
+        settings['show-7'] = false;
 
-    if (id in settings) {
-        settings[id] = true;
+        var id = el.options[el.selectedIndex].value;
+        if (id === 'clean-chord') {
+            return;
+        }
+
+        if (id in settings) {
+            settings[id] = true;
+        }
     }
 }
 
@@ -371,8 +397,9 @@ function stopMelody() {
  * -4.* сексты для кнопок справа
  * -5.* септы для кнопок справа
  * -6.* футер
- * 7. предпоказ
- * 8. сделать настройки в виде меню
+ * -7.* предпоказ
+ * -8.* сделать настройки в виде меню
  * 9. перерисовать ноты для клавиш
+ * 10. мелодии, нужно больше мелодий
  *
  * */
