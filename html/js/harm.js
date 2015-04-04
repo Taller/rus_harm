@@ -60,10 +60,10 @@ function getElementByChordLeft(chord) {
     return undefined;
 }
 
-function markPressedRight(note, octave) {
+function markPressedRight(note) {
     var el = getElementByNoteRight(note);
     if (Object.prototype.toString.call(el) === '[object Array]') {
-        el.map(function (button) {
+        el.forEach(function (button) {
             setPressedStyle(button);
         });
     } else {
@@ -102,13 +102,13 @@ function markNotesFor(chord) {
     }
     var notesInChord = chords[chord];
 
-    for (note of notesInChord) {
+    notesInChord.forEach(function (note) {
         markPressedRight(note);
         // показываем дополнительные кнопки слева для аккордов
         if (settings['show-all']) {
             markPressedLeft(note);
         }
-    }
+    });
 }
 
 function markNotesForBass(bass, button) {
@@ -178,7 +178,8 @@ function clearRight() {
     while (pressedElements.length > 0) {
         removePressedStyle(pressedElements[0]);
     }
-    var pressedElements = document.getElementById('right-kbd').getElementsByClassName('button_preview');
+
+    pressedElements = document.getElementById('right-kbd').getElementsByClassName('button_preview');
     while (pressedElements.length > 0) {
         removePreviewStyle(pressedElements[0]);
     }
@@ -302,6 +303,10 @@ function markRightFor(item, mode) {
 }
 
 function markLeftFor(item, mode) {
+    if (item === undefined) {
+        return undefined;
+    }
+
     /* playLeft */
     var ln;
     if ('ln' in item) {
@@ -367,6 +372,7 @@ function changeSetting(el) {
 
         if (id in settings) {
             settings[id] = true;
+            return;
         }
     }
 }
