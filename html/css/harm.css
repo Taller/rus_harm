@@ -3,6 +3,7 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
 .page-wrapper {
     min-height: 100%;
     margin-bottom: -64px;
@@ -17,17 +18,7 @@ html, body {
 }
 
 .align-right {
-    text-align: right;
     margin-left: 30px;
-    height: 20px;
-    width: 60px;
-}
-
-.align-left {
-    text-align: left;
-    margin-right: 30px;
-    height: 20px;
-    width: 60px;
 }
 
 .holder {
@@ -61,7 +52,11 @@ html, body {
 }
 
 .chord {
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAfCAMAAAAlbpZMAAAAMFBMVEWSkpKqqqqtra2zs7O4uLi9vb3CwsLGxsbKysrQ0NDW1tba2tri4uLo6Ojs7Oz///86Fca0AAAAM0lEQVQoz2PgAwF+LIABvwz/qAy9ZPhxyvBgBQw8uAAeGS5cgCwZVlyALBlGXACPDFUBAKqCIMQcmQ+CAAAAAElFTkSuQmCC) repeat;
+    background-image: url("data:image/png;base64,\
+    iVBORw0KGgoAAAANSUhEUgAAABkAAAAfCAMAAAAlbpZMAAAAMFBMVEWSkpKqqqqtra2zs7O4uLi9\
+    vb3CwsLGxsbKysrQ0NDW1tba2tri4uLo6Ojs7Oz///86Fca0AAAAM0lEQVQoz2PgAwF+LIABvwz/\
+    qAy9ZPhxyvBgBQw8uAAeGS5cgCwZVlyALBlGXACPDFUBAKqCIMQcmQ+CAAAAAElFTkSuQmCC");
+    background-repeat: repeat;
 }
 
 .p_chord {
@@ -78,7 +73,7 @@ html, body {
 
 .setting {
     text-align: center;
-    font-size: 9pt;
+    font-size: 10pt;
     margin-left: auto;
     margin-right: auto;
 }
@@ -90,4 +85,63 @@ html, body {
     height: 26px;
     text-align: center;
     vertical-align: text-bottom;
+}
+
+.btn_number {
+    position: relative;
+    top: -22px;
+    left: 28px;
+    font-size: 7pt;
+    color: #BBBBBB;
+    width: 10px;
+}
+
+/* right-kbd inside this td */
+#left-col {
+    height: 598px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-top-left-radius: 80px;
+    border-bottom-left-radius: 80px;
+}
+
+#right-kbd {
+    height: 520px;
+    padding-left: 20px;
+    margin-right: 20px;
+    margin-top: 39px;
+    margin-bottom: 39px;
+}
+
+/* left-kbd inside this td */
+#right-col {
+    height: 598px;
+    width: 250px;
+    border: solid 1px black;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#left-kbd {
+    margin-left: 80px;
+    width: 120px;
+    height: 338px;
+    clear: both;
+    border: solid 1px black;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+#current_chord {
+    text-align: center;
+    font-size: 34pt;
+    margin: 10px auto 10px auto;
+    height: 50px;
+    border-top: solid 1px black;
+}
+
+#melodies, #tempo, #show-right {
+    width: 100%;
+    font-size: 10pt;
 }
