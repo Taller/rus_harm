@@ -1,154 +1,118 @@
-var chords = {
-    "A"  : ['A', 'E',  'Db'],
-    "A7" : ['A', 'E',  'Db', 'G' ],
-    "A"  : ['A', 'E',  'Db', 'F#'],
-    "Am" : ['A', 'E',  'C' ],
-    "Am7": ['A', 'E',  'C' , 'G' ],
-    "Am6": ['A', 'E',  'C' , 'F#'],
-    "H"  : ['H', 'F#', 'Eb'],
-    "H7" : ['H', 'F#', 'Eb', 'A' ],
-    "H6" : ['H', 'F#', 'Eb', 'G#'],
-    "Hm" : ['H', 'F#', 'D' ],
-    "Hm7": ['H', 'F#', 'D' , 'A' ],
-    "Hm7": ['H', 'F#', 'D' , 'G#'],
-    "C"  : ['C', 'G',  'E' ],
-    "C7" : ['C', 'G',  'E ', 'Hb'],
-    "C6" : ['C', 'G',  'E ', 'A' ],
-    "Cm" : ['C', 'G',  'Eb'],
-    "Cm" : ['C', 'G',  'Eb', 'Hb'],
-    "Cm6": ['C', 'G',  'Eb', 'A' ],
-    "D"  : ['D', 'A',  'F#'],
-    "D7" : ['D', 'A',  'F#', 'C' ],
-    "D6" : ['D', 'A',  'F#', 'H' ],
-    "Dm" : ['D', 'A',  'F' ],
-    "Dm7": ['D', 'A',  'F' , 'C' ],
-    "Dm6": ['D', 'A',  'F' , 'H' ],
-    "E"  : ['E', 'H',  'G#'],
-    "E7" : ['E', 'H',  'G#', 'D' ],
-    "E6" : ['E', 'H',  'G#', 'Db'],
-    "Em" : ['E', 'H',  'G' ],
-    "Em7": ['E', 'H',  'G' , 'D' ],
-    "Em6": ['E', 'H',  'G' , 'Db'],
-    "F"  : ['F', 'C',  'A' ],
-    "F7" : ['F', 'C',  'A' , 'Eb'],
-    "F6" : ['F', 'C',  'A' , 'D' ],
-    "Fm" : ['F', 'C',  'G#'],
-    "Fm7": ['F', 'C',  'G#', 'Eb'],
-    "Fm6": ['F', 'C',  'G#', 'D' ],
-    "G"  : ['G', 'D',  'H' ],
-    "G7" : ['G', 'D',  'H',  'F' ],
-    "G6" : ['G', 'D',  'H',  'E' ],
-    "Gm" : ['G', 'D',  'Hb'],
-    "Gm7": ['G', 'D',  'Hb', 'F' ],
-    "Gm6": ['G', 'D',  'Hb', 'E' ],
+const tone = {
+//          0    1     2     3    4    5    6     7    8     9   10    11
+    'C':  ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'H'],
+    'C#': ['C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'H', 'C'],
+    'D':  ['D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'H', 'C', 'C#'],
+    'D#': ['D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'H', 'C', 'C#', 'D'],
+    'E':  ['E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'H', 'C', 'C#', 'D', 'D#'],
+    'F':  ['F', 'F#', 'G', 'G#', 'A', 'A#', 'H', 'C', 'C#', 'D', 'D#', 'E'],
+    'F#': ['F#', 'G', 'G#', 'A', 'A#', 'H', 'C', 'C#', 'D', 'D#', 'E', 'F'],
+    'G':  ['G', 'G#', 'A', 'A#', 'H', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#'],
+    'G#': ['G#', 'A', 'A#', 'H', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G'],
+    'A':  ['A', 'A#', 'H', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'],
+    'A#': ['A#', 'H', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A'],
+    'B':  ['B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#'],
+    'H':  ['H', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#']
 };
 
-var nleft = {
-    'C' : [6,  20],
-    'D' : [2,  16, 21],
-    'E' : [12, 22],
-    'F' : [8,  23],
-    'G' : [4,  24],
-    'A' : [14, 18, 25],
-    'H' : [10, 19],
-    'B' : [10, 19],
-    'F#': [17],
-    'Gb': [17]
+class ScoreData {
+    constructor(dataset) {
+
+        this.btn = dataset.btn;
+        this.side = dataset.side;
+        this.octave = dataset.octave;
+    }
+    btn;
+    side;
+    octave;
 }
 
-var nright = {
-    'C' : [3,  10, 18, 25],
-    'D' : [7,  15, 22],
-    'E' : [4,  11, 19],
-    'F' : [8,  16, 23],
-    'G' : [5,  12, 20],
-    'A' : [9,  17, 24],
-    'H' : [6,  13, 21],
-    'B' : [6,  13, 21],
-    'F#': [14],
-    'Gb': [14],
-    'D#': [1],
-    'Eb': [1],
-    'G#': [2],
-    'Ab': [2]
+function initToneDropDown() {
+    const sel = document.getElementById('current_tone');
+    let opt;
+    for (const value in Object.keys(tone)) {
+        opt = document.createElement('option');
+        opt.value = Object.keys(tone)[value];
+        opt.innerHTML = Object.keys(tone)[value];
+        sel.appendChild(opt);
+    }
 }
 
-var numbynote = {
-    'D#' : 1,
-    'Eb' : 1,
-    'G#' : 2,
-    'Ab' : 2,
-    'C1' : 3,
-    'E1' : 4,
-    'G1' : 5,
-    'H1' : 6,
-    'D2' : 7,
-    'F2' : 8,
-    'A2' : 9,
-    'C3' : 10,
-    'E3' : 11,
-    'G3' : 12,
-    'H3' : 13,
-    'F#' : 14,
-    'Gb' : 14,
-    'D1' : 15,
-    'F1' : 16,
-    'A1' : 17,
-    'C2' : 18,
-    'E2' : 19,
-    'G2' : 20,
-    'H2' : 21,
-    'D3' : 22,
-    'F3' : 23,
-    'A3' : 24,
-    'C4' : 25
-}
-
-var cleft = {
-    'Am': 13,
-    'Dm': 15,
-    'E' : 11,
-    'E7': 11,
-    'H' : 9,
-    'H7': 9,
-    'D' : 1,
-    'D7': 1,
-    'G' : 3,
-    'G7': 3,
-    'C' : 5,
-    'C7': 5,
-    'F' : 7,
-    'F7': 7
-}
-
-var tempos = {
-    'grave'          : [40,  'Grave',          'Мрачно, печально'],
-    'largo'          : [46,  'Largo',          'Долго'],
-    'lento'          : [52,  'Lento',          'Медленно'],
-    'adagio'         : [56,  'Adagio',         'Протяжно'],
-    'larghetto'      : [60,  'Larghetto',      'Довольно широко'],
-    'andante'        : [66,  'Andante',        'Умеренно'],
-    'andantino'      : [69,  'Andantino',      'Скорее, чем andante, но медленнее, чем allegretto'],
-    'sostenuto'      : [76,  'Sostenuto',      ''],
-    'commodo'        : [80,  'Commodo',        'Удобно, непринуждённо, не спеша'],
-    'maestoso'       : [84,  'Maestoso',       'Торжественно'],
-    'moderato'       : [88,  'Moderato',       'Сдержанно'],
-    'allegretto'     : [108, 'Allegretto',     'Медленнее, чем allegro, но скорее, чем andante'],
-    'animato'        : [120, 'Animato',        'Оживлённо'],
-    'allegro'        : [132, 'Allegro',        'Скоро. весело'],
-    'allegro_assai'  : [144, 'Allegro assai',  'Весьма быстро'],
-    'allegro_vivace' : [152, 'Allegro vivace', 'Значительно быстро'],
-    'vivace'         : [160, 'Vivace',         'Быстро, живо'],
-    'presto'         : [184, 'Presto',         'Быстро'],
-    'prestissimo'    : [208, 'Prestissimo',    'Очень быстро']
-}
-
-var settings = {
-    'show-all' : true,
-    'show-7'   : false,
-    'show-6'   : false,
-    'stop'     : true,
-    'metronom' : 20,
+const chords = {
+    'maj': [0, 4, 7],
+    'maj6': [0, 4, 7, 10],
+    'maj7': [0, 4, 7, 11],
+    'min': [0, 3, 7],
+    'min6': [0, 3, 7, 10],
+    'min7': [0, 3, 7, 11],
 };
 
-var songs = {};
+function getLettersInChord(btnNum) {
+    if (btnNum === null || btnNum === undefined) {
+        return;
+    }
+
+    let chordKey;
+    if (leftBtnsChords[btnNum][1] === '') {
+        chordKey = 'maj';
+    } else {
+        chordKey = 'min';
+    }
+
+    if (settings["show-6"]) {
+        chordKey += '6';
+    }
+
+    if (settings["show-7"]) {
+        chordKey += '7';
+    }
+
+    const currentTone = document.getElementById("current_tone").value;
+    const currAllTones = tone[currentTone];
+    const currChordTone = tone[currAllTones[leftBtns[btnNum]]];
+
+    const chord = [];
+    for (const n in chords[chordKey]) {
+        chord.push(currChordTone[chords[chordKey][n]]);
+    }
+
+    return chord;
+}
+
+const tempos = {
+    'grave': [40, 'Grave', 'Мрачно, печально'],
+    'largo': [46, 'Largo', 'Долго'],
+    'lento': [52, 'Lento', 'Медленно'],
+    'adagio': [56, 'Adagio', 'Протяжно'],
+    'larghetto': [60, 'Larghetto', 'Довольно широко'],
+    'andante': [66, 'Andante', 'Умеренно'],
+    'andantino': [69, 'Andantino', 'Скорее, чем andante, но медленнее, чем allegretto'],
+    'sostenuto': [76, 'Sostenuto', ''],
+    'commodo': [80, 'Commodo', 'Удобно, непринуждённо, не спеша'],
+    'maestoso': [84, 'Maestoso', 'Торжественно'],
+    'moderato': [88, 'Moderato', 'Сдержанно'],
+    'allegretto': [108, 'Allegretto', 'Медленнее, чем allegro, но скорее, чем andante'],
+    'animato': [120, 'Animato', 'Оживлённо'],
+    'allegro': [132, 'Allegro', 'Скоро. весело'],
+    'allegro_assai': [144, 'Allegro assai', 'Весьма быстро'],
+    'allegro_vivace': [152, 'Allegro vivace', 'Значительно быстро'],
+    'vivace': [160, 'Vivace', 'Быстро, живо'],
+    'presto': [184, 'Presto', 'Быстро'],
+    'prestissimo': [208, 'Prestissimo', 'Очень быстро']
+};
+
+const settings = {
+    'show-all': true,
+    'show-7': false,
+    'show-6': false
+};
+
+const actions = {
+    'initToneDropDown': initToneDropDown,
+    'addNumbersToButtonsRight': addNumbersToButtonsRight,
+    'addNumbersToButtonsLeft': addNumbersToButtonsLeft,
+    'markBtnForChordRight': markBtnForChordRight,
+    'markBtnForChordLeft' : markBtnForChordLeft
+}
+
+
