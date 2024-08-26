@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Русская гармонь. Раскладка нот и аккордов.</title>
+    <script type="text/javascript" src="js/common_harm.js"></script>
     <script type="text/javascript" src="js/data.js"></script>
-    <script type="text/javascript" src="js/harm.js"></script>
     <link rel="stylesheet" type="text/css" href="css/harm.css"/>
     <link rel="stylesheet" type="text/css" href="css/notes.css"/>
-    <link rel="stylesheet" type="text/css" href="css/hint.css"/>
+    <link rel="stylesheet" type="text/css" href="css/notes_img.css"/>
 </head>
 
 <body>
@@ -19,369 +19,856 @@
             cellspacing="0"
             style="height:600px;"
             align="center">
-    <tr>
-    <td id="left-col">
-        <div id="right-kbd">
-            <div class="holder">
-                <div id="N1" class="button"
-                     onmouseover="showHint('D2_sharp');" onmouseout="showHint();">D#
+        <tr>
+            <td id="left-col">
+                <div id="right-kbd">
+                    <div class="holder_rkdb">
+                        <div id="N1" class="button flex_l" onclick="markNote(this);setStylePressed(this);"
+                             data-button='{"number" : 1, "side" :"r"}'
+                             data-score='{"octave" : 5, "note" : "D#"}'>D#</div>
+                        <div id="N14" class="button align-right" onclick="markNote(this);"
+                             data-button='{"number" : 14, "side" :"r"}'
+                             data-score='{"octave" : 5, "note" : "F#"}'>F#</div>
+                    </div>
+                    <div class="holder_rkdb">
+                        <div id="N2" class="button flex_l" onclick="markNote(this);"
+                             data-button='{"number" : 2, "side" :"r"}'
+                             data-score='{"octave" : 4, "note" : "G#"}'>G#</div>
+                        <div id="N15" class="button align-right" onclick="markNote(this);"
+                             data-button='{"number" : 15, "side" :"r"}'
+                             data-score='{"octave" : 4, "note" : "D"}'>D</div>
+                    </div>
+                    <div class="holder_rkdb">
+                        <div id="N3" class="button flex_l" onclick="markNote(this);"
+                             data-button='{"number" : 3, "side" :"r"}'
+                             data-score='{"octave" : 4, "note" : "C"}'>C</div>
+                        <div id="N16" class="button align-right" onclick="markNote(this);"
+                             data-button='{"number" : 16, "side" :"r"}'
+                             data-score='{"octave" : 4, "note" : "F"}'>F</div>
+                    </div>
+                    <div class="holder_rkdb">
+                        <div id="N4" class="button flex_l" onclick="markNote(this);"
+                             data-button='{"number" : 4, "side" :"r"}'
+                             data-score='{"octave" : 4, "note" : "E"}'>E</div>
+                        <div id="N17" class="button align-right" onclick="markNote(this);"
+                             data-button='{"number" : 17, "side" :"r"}'
+                             data-score='{"octave" : 4, "note" : "A"}'>A</div>
+                    </div>
+                    <div class="holder_rkdb">
+                        <div id="N5" class="button flex_l" onclick="markNote(this);"
+                             data-button='{"number" : 5, "side" :"r"}'
+                             data-score='{"octave" : 4, "note" : "G"}'>G</div>
+                        <div id="N18" class="button align-right" onclick="markNote(this);"
+                             data-button='{"number" : 18, "side" :"r"}'
+                             data-score='{"octave" : 5, "note" : "C"}'>C</div>
+                    </div>
+                    <div class="holder_rkdb">
+                        <div id="N6" class="button flex_l" onclick="markNote(this);"
+                             data-button='{"number" : 6, "side" :"r"}'
+                             data-score='{"octave" : 4, "note" : "H"}'>H</div>
+                        <div id="N19" class="button align-right" onclick="markNote(this);"
+                             data-button='{"number" : 19, "side" :"r"}'
+                             data-score='{"octave" : 5, "note" : "E"}'>E</div>
+                    </div>
+                    <div class="holder_rkdb">
+                        <div id="N7" class="button flex_l" onclick="markNote(this);"
+                             data-button='{"number" : 7, "side" :"r"}'
+                             data-score='{"octave" : 5, "note" : "D"}'>D</div>
+                        <div id="N20" class="button align-right" onclick="markNote(this);"
+                             data-button='{"number" : 20, "side" :"r"}'
+                             data-score='{"octave" : 5, "note" : "G"}'>G</div>
+                    </div>
+                    <div class="holder_rkdb">
+                        <div id="N8" class="button flex_l" onclick="markNote(this);"
+                             data-button='{"number" : 8, "side" :"r"}'
+                             data-score='{"octave" : 5, "note" : "F"}'>F</div>
+                        <div id="N21" class="button align-right" onclick="markNote(this);"
+                             data-button='{"number" : 21, "side" :"r"}'
+                             data-score='{"octave" : 5, "note" : "H"}'>H</div>
+                    </div>
+                    <div class="holder_rkdb">
+                        <div id="N9" class="button flex_l"
+                             data-button='{"number" : 9, "side" :"r"}' onclick="markNote(this);"
+                             data-score='{"octave" : 5, "note" : "A"}'>A</div>
+                        <div id="N22" class="button align-right" onclick="markNote(this);"
+                             data-button='{"number" : 22, "side" :"r"}'
+                             data-score='{"octave" : 6, "note" : "D"}'>D</div>
+                    </div>
+                    <div class="holder_rkdb">
+                        <div id="N10" class="button flex_l" onclick="markNote(this);"
+                             data-button='{"number" : 10, "side" :"r"}'
+                             data-score='{"octave" : 6, "note" : "C"}'>C</div>
+                        <div id="N23" class="button align-right" onclick="markNote(this);"
+                             data-button='{"number" : 23, "side" :"r"}'
+                             data-score='{"octave" : 6, "note" : "F"}'>F</div>
+                    </div>
+                    <div class="holder_rkdb">
+                        <div id="N11" class="button flex_l" onclick="markNote(this);"
+                             data-button='{"number" : 11, "side" :"r"}'
+                             data-score='{"octave" : 6, "note" : "E"}'>E</div>
+                        <div id="N24" class="button align-right" onclick="markNote(this);"
+                             data-button='{"number" : 24, "side" :"r"}'
+                             data-score='{"octave" : 6, "note" : "A"}'>A</div>
+                    </div>
+                    <div class="holder_rkdb">
+                        <div id="N12" class="button flex_l" onclick="markNote(this);"
+                             data-button='{"number" : 12, "side" :"r"}'
+                             data-score='{"octave" : 6, "note" : "G"}'>G</div>
+                        <div id="N25" class="button align-right" onclick="markNote(this);"
+                             data-button='{"number" : 25, "side" :"r"}'
+                             data-score='{"octave" : 7, "note" : "C"}'>C</div>
+                    </div>
+                    <div class="holder_rkdb">
+                        <div id="N13" class="button flex_l" onclick="markNote(this);"
+                             data-button='{"number" : 13, "side" :"r"}'
+                             data-score='{"octave" : 6, "note" : "H"}'>H</div>
+                    </div>
                 </div>
-            </div>
-            <div class="holder align-right">
-                <div id="N14" class="button align-right"
-                     onmouseover="showHint('F2_sharp');" onmouseout="showHint();">F#
+            </td>
+            <td style="height:630px;width:1200px;">
+                <div style="height:34px;background-color:#EEEEEE;" onclick="clearPressed();"></div>
+                <div id="all-notes" style="height:560px;font-size:14pt;align-content:center;display: flex;">
+                    <div style="width:106px;display: block;">
+                        <div style="height:37px;text-align:center;width:106px;">
+                            <span class="note_sign">Субконтр</span>
+                        </div>
+                        <div style="height:387px;width:106px;display:flex;">
+                            <div id="bass-key" style="width:65px;">
+                            </div>
+                            <div id="a0" onclick="changeNoteColor(this)" style="width:20px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">A<sub>0</sub></span>
+                                    <span class="note_sign_ru">Ля</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 230px; display: none;"
+                                     data-score='{"octave" : 0, "note" : "A"}'></div>
+                            </div>
+                            <div id="h0" onclick="changeNoteColor(this)" style="width:20px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">H<sub>0</sub></span>
+                                    <span class="note_sign_ru">Си</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 225px; display: none;"
+                                     data-score='{"octave" : 0, "note" : "H"}'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width:142px;display: block;">
+                        <div style="height:37px;text-align:center;width:142px;">
+                            <span class="note_sign">Контр</span>
+                        </div>
+                        <div style="height:387px;width:142px;display:flex;border-spacing: unset;">
+                            <div id="c1" onclick="changeNoteColor(this)" style="width:20px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">C<sub>1</sub></span>
+                                    <span class="note_sign_ru">До</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 255px; display: none;"
+                                     data-score='{"octave" : 1, "note" : "C"}'></div>
+                            </div>
+                            <div id="d1" onclick="changeNoteColor(this)" style="width:21px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">D<sub>1</sub></span>
+                                    <span class="note_sign_ru">Ре</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 250px; display: none;"
+                                     data-score='{"octave" : 1, "note" : "D"}'></div>
+                            </div>
+                            <div id="e1" onclick="changeNoteColor(this)" style="width:19px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">E<sub>1</sub></span>
+                                    <span class="note_sign_ru">Ми</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 245px; display: none;"
+                                     data-score='{"octave" : 1, "note" : "E"}'></div>
+                            </div>
+                            <div id="f1" onclick="changeNoteColor(this)" style="width:21px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">F<sub>1</sub></span>
+                                    <span class="note_sign_ru">Фа</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 240px; display: none;"
+                                     data-score='{"octave" : 1, "note" : "F"}'></div>
+                            </div>
+                            <div id="g1" onclick="changeNoteColor(this)" style="width:20px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">G<sub>1</sub></span>
+                                    <span class="note_sign_ru">Соль</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 235px; display: none;"
+                                     data-score='{"octave" : 1, "note" : "G"}'></div>
+                            </div>
+                            <div id="a1" onclick="changeNoteColor(this)" style="width:19px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">A<sub>1</sub></span>
+                                    <span class="note_sign_ru">Ля</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 230px; display: none;"
+                                     data-score='{"octave" : 1, "note" : "A"}'></div>
+                            </div>
+                            <div id="h1" onclick="changeNoteColor(this)" style="width:22px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">H<sub>1</sub></span>
+                                    <span class="note_sign_ru">Си</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 225px; display: none;"
+                                     data-score='{"octave" : 1, "note" : "H"}'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width:139px;display: block;">
+                        <div style="height:37px;text-align:center;width:139px;">
+                            <span class="note_sign">Большая</span>
+                        </div>
+                        <div style="height:387px;width:139px;display:flex;">
+                            <div id="c2" onclick="changeNoteColor(this)" style="width:20px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">C<sub>2</sub></span>
+                                    <span class="note_sign_ru">До</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 220px; display: none;"
+                                     data-score='{"octave" : 2, "note" : "C"}'></div>
+                            </div>
+                            <div id="d2" onclick="changeNoteColor(this)" style="width:20px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">D<sub>2</sub></span>
+                                    <span class="note_sign_ru">Ре</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 215px; display: none;"
+                                     data-score='{"octave" : 2, "note" : "D"}'></div>
+                            </div>
+                            <div id="e2" onclick="changeNoteColor(this)" style="width:20px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">E<sub>2</sub></span>
+                                    <span class="note_sign_ru">Ми</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 210px; display: none;"
+                                     data-score='{"octave" : 2, "note" : "E"}'></div>
+                            </div>
+                            <div id="f2" onclick="changeNoteColor(this)" style="width:19px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">F<sub>2</sub></span>
+                                    <span class="note_sign_ru">Фа</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 205px; display: none;"
+                                     data-score='{"octave" : 2, "note" : "F"}'></div>
+                            </div>
+                            <div id="g2" onclick="changeNoteColor(this)" style="width:21px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">G<sub>2</sub></span>
+                                    <span class="note_sign_ru">Соль</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 200px; display: none;"
+                                     data-score='{"octave" : 2, "note" : "G"}'></div>
+                            </div>
+                            <div id="a2" onclick="changeNoteColor(this)" style="width:20px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">A<sub>2</sub></span>
+                                    <span class="note_sign_ru">Ля</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 195px; display: none;"
+                                     data-score='{"octave" : 2, "note" : "A"}'></div>
+                            </div>
+                            <div id="h2" onclick="changeNoteColor(this)" style="width:19px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">H<sub>2</sub></span>
+                                    <span class="note_sign_ru">Си</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 190px; display: none;"
+                                     data-score='{"octave" : 2, "note" : "H"}'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width:141px;display: block;">
+                        <div style="height:37px;text-align:center;width:141px;">
+                            <span class="note_sign">Малая</span>
+                        </div>
+                        <div style="height:387px;width:141px;display:flex;">
+                            <div id="c3" onclick="changeNoteColor(this)" style="width:20px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">C<sub>3</sub></span>
+                                    <span class="note_sign_ru">До</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 127px; display: none;"
+                                     data-score='{"octave" : 3, "note" : "C"}'></div>
+                                <div class="note" style="margin-top: 185px; display: none;"
+                                     data-score='{"octave" : 3, "note" : "C"}'></div>
+                            </div>
+                            <div id="d3" onclick="changeNoteColor(this)" style="width:21px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">D<sub>3</sub></span>
+                                    <span class="note_sign_ru">Ре</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 122px; display: none;"
+                                     data-score='{"octave" : 3, "note" : "D"}'></div>
+                                <div class="note" style="margin-top: 180px; display: none;"
+                                     data-score='{"octave" : 3, "note" : "D"}'></div>
+                            </div>
+                            <div id="e3" onclick="changeNoteColor(this)" style="width:21px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">E<sub>3</sub></span>
+                                    <span class="note_sign_ru">Ми</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 117px; display: none;"
+                                     data-score='{"octave" : 3, "note" : "E"}'></div>
+                                <div class="note" style="margin-top: 175px; display: none;"
+                                     data-score='{"octave" : 3, "note" : "E"}'></div>
+                            </div>
+                            <div id="f3" onclick="changeNoteColor(this)" style="width:20px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">F<sub>3</sub></span>
+                                    <span class="note_sign_ru">Фа</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 112px; display: none;"
+                                     data-score='{"octave" : 3, "note" : "F"}'></div>
+                                <div class="note" style="margin-top: 170px; display: none;"
+                                     data-score='{"octave" : 3, "note" : "F"}'></div>
+                            </div>
+                            <div id="g3" onclick="changeNoteColor(this)" style="width:19px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">G<sub>3</sub></span>
+                                    <span class="note_sign_ru">Соль</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 107px; display: none;"
+                                     data-score='{"octave" : 3, "note" : "G"}'></div>
+                                <div class="note" style="margin-top: 165px; display: none;"
+                                     data-score='{"octave" : 3, "note" : "G"}'></div>
+                            </div>
+                            <div id="a3" onclick="changeNoteColor(this)" style="width:21px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">A<sub>3</sub></span>
+                                    <span class="note_sign_ru">Ля</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 102px; display: none;"
+                                     data-score='{"octave" : 3, "note" : "A"}'></div>
+                                <div class="note" style="margin-top: 160px; display: none;"
+                                     data-score='{"octave" : 3, "note" : "A"}'></div>
+                            </div>
+                            <div id="h3" onclick="changeNoteColor(this)" style="width:19px;">
+                                <div style="text-align: center;height: 60px;">
+                                    <span class="note_sign">H<sub>3</sub></span>
+                                    <span class="note_sign_ru">Си</span>
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                </div>
+                                <div class="note" style="margin-top: 97px; display: none;"
+                                     data-score='{"octave" : 3, "note" : "H"}'></div>
+                                <div class="note" style="margin-top: 155px; display: none;"
+                                     data-score='{"octave" : 3, "note" : "H"}'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width:142px;display: block;">
+                        <div style="height:37px;text-align:center;width:142px;">
+                            <span class="note_sign">Первая</span>
+                        </div>
+                        <div style="height:387px;width:142px;display:flex;">
+                            <div id="c4" onclick="changeNoteColor(this)" style="width:21px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">C<sub>4</sub></span>
+                                    <span class="note_sign_ru">До</span>
+                                </div>
+                                <div class="note" style="margin-top: 150px; display: none;"
+                                     data-score='{"octave" : 4, "note" : "C"}'></div>
+                                <div class="note" style="margin-top: 210px; display: none;"
+                                     data-score='{"octave" : 4, "note" : "C"}'></div>
+                            </div>
+                            <div id="d4" onclick="changeNoteColor(this)" style="width:20px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">D<sub>4</sub></span>
+                                    <span class="note_sign_ru">Ре</span>
+                                </div>
+                                <div class="note" style="margin-top: 145px; display: none;"
+                                     data-score='{"octave" : 4, "note" : "D"}'></div>
+                                <div class="note" style="margin-top: 205px; display: none;"
+                                     data-score='{"octave" : 4, "note" : "D"}'></div>
+                            </div>
+                            <div id="e4" onclick="changeNoteColor(this)" style="width:20px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">E<sub>4</sub></span>
+                                    <span class="note_sign_ru">Ми</span>
+                                </div>
+                                <div class="note" style="margin-top: 140px; display: none;"
+                                     data-score='{"octave" : 4, "note" : "E"}'></div>
+                                <div class="note" style="margin-top: 200px; display: none;"
+                                     data-score='{"octave" : 4, "note" : "E"}'></div>
+                            </div>
+                            <div id="f4" onclick="changeNoteColor(this)" style="width:20px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">F<sub>4</sub></span>
+                                    <span class="note_sign_ru">Фа</span>
+                                </div>
+                                <div class="note" style="margin-top: 135px; display: none;"
+                                     data-score='{"octave" : 4, "note" : "F"}'></div>
+                                <div class="note" style="margin-top: 195px; display: none;"
+                                     data-score='{"octave" : 4, "note" : "F"}'></div>
+                            </div>
+                            <div id="g4" onclick="changeNoteColor(this)" style="width:21px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">G<sub>4</sub></span>
+                                    <span class="note_sign_ru">Соль</span>
+                                </div>
+                                <div class="note" style="margin-top: 130px; display: none;"
+                                     data-score='{"octave" : 4, "note" : "G"}'></div>
+                                <div class="note" style="margin-top: 190px; display: none;"
+                                     data-score='{"octave" : 4, "note" : "G"}'></div>
+                            </div>
+                            <div id="a4" onclick="changeNoteColor(this)" style="width:19px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">A<sub>4</sub></span>
+                                    <span class="note_sign_ru">Ля</span>
+                                </div>
+                                <div class="note" style="margin-top: 125px; display: none;"
+                                     data-score='{"octave" : 4, "note" : "A"}'></div>
+                                <div class="note" style="margin-top: 185px; display: none;"
+                                     data-score='{"octave" : 4, "note" : "A"}'></div>
+                            </div>
+                            <div id="h4" onclick="changeNoteColor(this)" style="width:21px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">H<sub>4</sub></span>
+                                    <span class="note_sign_ru">Си</span>
+                                </div>
+                                <div class="note" style="margin-top: 120px; display: none;"
+                                     data-score='{"octave" : 4, "note" : "H"}'></div>
+                                <div class="note" style="margin-top: 180px; display: none;"
+                                     data-score='{"octave" : 4, "note" : "H"}'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width:140px;display: block;">
+                        <div style="height:37px;text-align:center;width:140px;">
+                            <span class="note_sign">Вторая</span>
+                        </div>
+                        <div style="height:387px;width:140px;display:flex;">
+                            <div id="c5" onclick="changeNoteColor(this)" style="width:19px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">C<sub>5</sub></span>
+                                    <span class="note_sign_ru">До</span>
+                                </div>
+                                <div class="note" style="margin-top: 115px; display: none;"
+                                     data-score='{"octave" : 5, "note" : "C"}'></div>
+                            </div>
+                            <div id="d5" onclick="changeNoteColor(this)" style="width:21px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">D<sub>5</sub></span>
+                                    <span class="note_sign_ru">Ре</span>
+                                </div>
+                                <div class="note" style="margin-top: 110px; display: none;"
+                                     data-score='{"octave" : 5, "note" : "D"}'></div>
+                            </div>
+                            <div id="e5" onclick="changeNoteColor(this)" style="width:20px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">E<sub>5</sub></span>
+                                    <span class="note_sign_ru">Ми</span>
+                                </div>
+                                <div class="note" style="margin-top: 105px; display: none;"
+                                     data-score='{"octave" : 5, "note" : "E"}'></div>
+                            </div>
+                            <div id="f5" onclick="changeNoteColor(this)" style="width:20px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">F<sub>5</sub></span>
+                                    <span class="note_sign_ru">Фа</span>
+                                </div>
+                                <div class="note" style="margin-top: 100px; display: none;"
+                                     data-score='{"octave" : 5, "note" : "F"}'></div>
+                            </div>
+                            <div id="g5" onclick="changeNoteColor(this)" style="width:20px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">G<sub>5</sub></span>
+                                    <span class="note_sign_ru">Соль</span>
+                                </div>
+                                <div class="note" style="margin-top: 95px; display: none;"
+                                     data-score='{"octave" : 5, "note" : "G"}'></div>
+                            </div>
+                            <div id="a5" onclick="changeNoteColor(this)" style="width:20px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">A<sub>5</sub></span>
+                                    <span class="note_sign_ru">Ля</span>
+                                </div>
+                                <div class="note" style="margin-top: 90px; display: none;"
+                                     data-score='{"octave" : 5, "note" : "A"}'></div>
+                            </div>
+                            <div id="h5" onclick="changeNoteColor(this)" style="width:20px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">H<sub>5</sub></span>
+                                    <span class="note_sign_ru">Си</span>
+                                </div>
+                                <div class="note" style="margin-top: 85px; display: none;"
+                                     data-score='{"octave" : 5, "note" : "H"}'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width:141px;display: block;">
+                        <div style="height:37px;text-align:center;width:141px;">
+                            <span class="note_sign">Третья</span>
+                        </div>
+                        <div style="height:387px;width:141px;display:flex;">
+                            <div id="c6" onclick="changeNoteColor(this)" style="width:21px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">C<sub>6</sub></span>
+                                    <span class="note_sign_ru">До</span>
+                                </div>
+                                <div class="note" style="margin-top: 80px; display: none;"
+                                     data-score='{"octave" : 6, "note" : "C"}'></div>
+                            </div>
+                            <div id="d6" onclick="changeNoteColor(this)" style="width:20px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">D<sub>6</sub></span>
+                                    <span class="note_sign_ru">Ре</span>
+                                </div>
+                                <div class="note" style="margin-top: 75px; display: none;"
+                                     data-score='{"octave" : 6, "note" : "D"}'></div>
+                            </div>
+                            <div id="e6" onclick="changeNoteColor(this)" style="width:19px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">E<sub>6</sub></span>
+                                    <span class="note_sign_ru">Ми</span>
+                                </div>
+                                <div class="note" style="margin-top: 70px; display: none;"
+                                     data-score='{"octave" : 6, "note" : "E"}'></div>
+                            </div>
+                            <div id="f6" onclick="changeNoteColor(this)" style="width:21px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">F<sub>6</sub></span>
+                                    <span class="note_sign_ru">Фа</span>
+                                </div>
+                                <div class="note" style="margin-top: 65px; display: none;"
+                                     data-score='{"octave" : 6, "note" : "F"}'></div>
+                            </div>
+                            <div id="g6" onclick="changeNoteColor(this)" style="width:20px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">G<sub>6</sub></span>
+                                    <span class="note_sign_ru">Соль</span>
+                                </div>
+                                <div class="note" style="margin-top: 60px; display: none;"
+                                     data-score='{"octave" : 6, "note" : "G"}'></div>
+                            </div>
+                            <div id="a6" onclick="changeNoteColor(this)" style="width:19px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">A<sub>6</sub></span>
+                                    <span class="note_sign_ru">Ля</span>
+                                </div>
+                                <div class="note" style="margin-top: 55px; display: none;"
+                                     data-score='{"octave" : 6, "note" : "A"}'></div>
+                            </div>
+                            <div id="h6" onclick="changeNoteColor(this)" style="width:21px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">H<sub>6</sub></span>
+                                    <span class="note_sign_ru">Си</span>
+                                </div>
+                                <div class="note" style="margin-top: 50px; display: none;"
+                                     data-score='{"octave" : 6, "note" : "H"}'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width:140px;display: block;">
+                        <div style="height:37px;text-align:center;width:140px;">
+                            <span class="note_sign">Четвертая</span>
+                        </div>
+                        <div style="height:387px;width:140px;display:flex;">
+                            <div id="c7" onclick="changeNoteColor(this)" style="width:20px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">C<sub>7</sub></span>
+                                    <span class="note_sign_ru">До</span>
+                                </div>
+                                <div class="note" style="margin-top: 80px; display: none;"
+                                     data-score='{"octave" : 7, "note" : "C"}'></div>
+                            </div>
+                            <div id="d7" onclick="changeNoteColor(this)" style="width:20px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">D<sub>7</sub></span>
+                                    <span class="note_sign_ru">Ре</span>
+                                </div>
+                                <div class="note" style="margin-top: 75px; display: none;"
+                                     data-score='{"octave" : 7, "note" : "D"}'></div>
+                            </div>
+                            <div id="e7" onclick="changeNoteColor(this)" style="width:21px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">E<sub>7</sub></span>
+                                    <span class="note_sign_ru">Ми</span>
+                                </div>
+                                <div class="note" style="margin-top: 70px; display: none;"
+                                     data-score='{"octave" : 7, "note" : "E"}'></div>
+                            </div>
+                            <div id="f7" onclick="changeNoteColor(this)" style="width:20px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">F<sub>7</sub></span>
+                                    <span class="note_sign_ru">Фа</span>
+                                </div>
+                                <div class="note" style="margin-top: 65px; display: none;"
+                                     data-score='{"octave" : 7, "note" : "F"}'></div>
+                            </div>
+                            <div id="g7" onclick="changeNoteColor(this)" style="width:19px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">G<sub>7</sub></span>
+                                    <span class="note_sign_ru">Соль</span>
+                                </div>
+                                <div class="note" style="margin-top: 60px; display: none;"
+                                     data-score='{"octave" : 7, "note" : "G"}'></div>
+                            </div>
+                            <div id="a7" onclick="changeNoteColor(this)" style="width:21px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">A<sub>7</sub></span>
+                                    <span class="note_sign_ru">Ля</span>
+                                </div>
+                                <div class="note" style="margin-top: 55px; display: none;"
+                                     data-score='{"octave" : 7, "note" : "A"}'></div>
+                            </div>
+                            <div id="h7" onclick="changeNoteColor(this)" style="width:19px;display: flex;">
+                                <div style="text-align: center;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">H<sub>7</sub></span>
+                                    <span class="note_sign_ru">Си</span>
+                                </div>
+                                <div class="note" style="margin-top: 50px; display: none;"
+                                     data-score='{"octave" : 7, "note" : "H"}'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width:106px;display: block;">
+                        <div style="height:37px;text-align:center;width:106px;">
+                            <span class="note_sign">Пятая</span>
+                        </div>
+                        <div style="height:387px;width:106px;display:flex;">
+                            <div id="c8" onclick="changeNoteColor(this)" style="width:106px;display: flex;">
+                                <div style="text-align: center;width: 22px;align-self: flex-end;margin-bottom: 14px;">
+                                    <span class="sharp" style="display: none">#</span>
+                                    <span class="flat" style="display: none">b</span>
+                                    <span class="note_sign">C<sub>8</sub></span>
+                                    <span class="note_sign_ru">До</span>
+                                </div>
+                                <div class="note" style="margin-top: 45px; display: none;"
+                                     data-score='{"octave" : 8, "note" : "C"}'></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="holder">
-                <div id="N2" class="button"
-                     onmouseover="showHint('G1_sharp');" onmouseout="showHint();">G#
+                <div style="height:34px;background-color:#EEEEEE;" onclick="clearPressed();"></div>
+            </td>
+            <td id="right-col">
+                <div style="margin: 5px;">
+                    <input id="show-all" type="checkbox" checked>
+                    <label for="show-all" style="cursor:pointer;">
+                        <span style="font-size: 10pt;">Дополнительные ноты к аккорду в басу.</span>
+                    </label>
+                    <hr style="margin-top:1px;margin-bottom:1px;"/>
+                    <div>
+                        <label for="show-right"></label>
+                        <select id="show-right">
+                            <option value="clean-chord">Чистые аккорды.</option>
+                            <option value="show-7">Ноты к септ-аккорду-7 справа.</option>
+                            <option value="show-6">Ноты к секст-аккорду-6 справа.</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="holder align-right">
-                <div id="N15" class="button align-right"
-                     onmouseover="showHint('D1');" onmouseout="showHint();">D
+                <div style="font-size:14pt;margin: 5px;padding-right:15px;text-align: right;">
+                    <span>Тональность:</span>
+                    <label for="current_tone"></label>
+                    <select id="current_tone" onchange="setTone(this)"></select>
                 </div>
-            </div>
-            <div class="holder">
-                <div id="N3" class="button"
-                     onmouseover="showHint('C1');" onmouseout="showHint();">C
-                </div>
-                <!--<div class="btn_number">3</div>-->
-            </div>
-            <div class="holder align-right">
-                <div id="N16" class="button align-right"
-                     onmouseover="showHint('F1');" onmouseout="showHint();">F
-                </div>
-            </div>
-            <div class="holder">
-                <div id="N4" class="button"
-                     onmouseover="showHint('E1');" onmouseout="showHint();">E
-                </div>
-            </div>
-            <div class="holder align-right">
-                <div id="N17" class="button align-right"
-                     onmouseover="showHint('A1');" onmouseout="showHint();">A
-                </div>
-            </div>
-            <div class="holder">
-                <div id="N5" class="button"
-                     onmouseover="showHint('G1');" onmouseout="showHint();">G
-                </div>
-            </div>
-            <div class="holder align-right">
-                <div id="N18" class="button align-right"
-                     onmouseover="showHint('C2');" onmouseout="showHint();">C
-                </div>
-            </div>
-            <div class="holder">
-                <div id="N6" class="button"
-                     onmouseover="showHint('H1');" onmouseout="showHint();">H
-                </div>
-            </div>
-            <div class="holder align-right">
-                <div id="N19" class="button align-right"
-                     onmouseover="showHint('E2');" onmouseout="showHint();">E
-                </div>
-            </div>
-            <div class="holder">
-                <div id="N7" class="button"
-                     onmouseover="showHint('D2');" onmouseout="showHint();">D
-                </div>
-            </div>
-            <div class="holder align-right">
-                <div id="N20" class="button align-right"
-                     onmouseover="showHint('G2');" onmouseout="showHint();">G
-                </div>
-            </div>
-            <div class="holder">
-                <div id="N8" class="button"
-                     onmouseover="showHint('F2');" onmouseout="showHint();">F
-                </div>
-            </div>
-            <div class="holder align-right">
-                <div id="N21" class="button align-right"
-                     onmouseover="showHint('H2');" onmouseout="showHint();">H
-                </div>
-            </div>
-            <div class="holder">
-                <div id="N9" class="button"
-                     onmouseover="showHint('A2');" onmouseout="showHint();">A
-                </div>
-            </div>
-            <div class="holder align-right">
-                <div id="N22" class="button align-right"
-                     onmouseover="showHint('D3');" onmouseout="showHint();">D
-                </div>
-            </div>
-            <div class="holder">
-                <div id="N10" class="button"
-                     onmouseover="showHint('C3');" onmouseout="showHint();">C
-                </div>
-            </div>
-            <div class="holder align-right">
-                <div id="N23" class="button align-right"
-                     onmouseover="showHint('F3');" onmouseout="showHint();">F
-                </div>
-            </div>
-            <div class="holder">
-                <div id="N11" class="button"
-                     onmouseover="showHint('E3');" onmouseout="showHint();">E
-                </div>
-            </div>
-            <div class="holder align-right">
-                <div id="N24" class="button align-right"
-                     onmouseover="showHint('A3');" onmouseout="showHint();">A
-                </div>
-            </div>
-            <div class="holder">
-                <div id="N12" class="button"
-                     onmouseover="showHint('G3');" onmouseout="showHint();">G
-                </div>
-            </div>
-            <div class="holder align-right">
-                <div id="N25" class="button align-right"
-                     onmouseover="showHint('C4');" onmouseout="showHint();">C
-                </div>
-            </div>
-            <div class="holder">
-                <div id="N13" class="button"
-                     onmouseover="showHint('H3');" onmouseout="showHint();">H
-                </div>
-            </div>
-        </div>
-    </td>
-    <td style="height:598px;border:solid 1px black;width:150px;">
-        <div id="current_chord">
-        </div>
-        <div id="note_hint">
-        </div>
-    </td>
-    <td style="height:598px;width:350px;">
-        <div style="height:34px;background-color:#EEEEEE;"></div>
-        <div style="height:530px;font-size:14pt;">
-            <select id="tempo">
-                <option value="stop">-- (Темп для 1/8 ноты, уд/мин)</option>
-            </select>
-            <select size="29" id="melodies" onchange="playMelody(this)"></select>
-        </div>
-        <div style="height:34px;background-color:#EEEEEE;"></div>
-    </td>
-    <td id="right-col">
-    <div style="margin: 5px;height: 89px;">
-        <input id="show-all" type="checkbox" onchange="changeSetting(this)" checked>
-        <label for="show-all" style="cursor:pointer;">
-            <span style="font-size: 10pt;">Дополнительные ноты к аккорду в басу.</span>
-        </label>
-        <hr style="margin-top:1px;margin-bottom:1px;"/>
-        <div>
-            <select id="show-right" onchange="changeSetting(this);" >
-                <option value="clean-chord">Чистые аккорды.</option>
-                <option value="show-7">Ноты к септ-аккорду-7 справа.</option>
-                <option value="show-6">Ноты к секст-аккорду-6 справа.</option>
-            </select>
-        </div>
-    </div>
-    <div id="left-kbd">
-        <div class="holder">
-            <span id="B17"
-                  class="hint--top hint--success button float_l"
-                  data-hint="Бас F# / фа-диез"
-                  onclick="markNotesForBass('F#', this);">
-                F#
-            </span>
-            <span id="B1"
-                  class="hint--top hint--success button chord float_r"
-                  data-hint="Аккорд D / ре-мажор"
-                  onclick="markNotesFor('D');">
-                D
-            </span>
-        </div>
-        <div class="holder">
-            <span id="B9"
-                  class="hint--top hint--success button chord center_margin"
-                  data-hint="Аккорд H / си-мажор"
-                  onclick="markNotesFor('H');">
-                H
-            </span>
-        </div>
-        <div class="holder">
-            <span id="B18"
-                  class="hint--top hint--success button float_l"
-                  data-hint="Бас A / ля"
-                  onclick="markNotesForBass('A', this);">
-                A
-            </span>
-            <span id="B2"
-                  class="hint--top hint--success button float_r"
-                  data-hint="Бас D / ре"
-                  onclick="markNotesForBass('D', this);">
-                D
-            </span>
-        </div>
-        <div class="holder">
-            <span id="B10"
-                  class="hint--top hint--success button center_margin"
-                  data-hint="Бас H / си"
-                  onclick="markNotesForBass('H', this);">
-                H
-            </span>
-        </div>
-        <div class="holder">
-            <span id="B19"
-                  class="hint--top hint--success button float_l"
-                  data-hint="Бас H / си"
-                  onclick="markNotesForBass('H', this);">
-                H
-            </span>
-            <span id="B3"
-                  class="hint--top hint--success button chord float_r"
-                  data-hint="Аккорд G / соль-мажор"
-                  onclick="markNotesFor('G');">
-                G
-            </span>
-        </div>
-        <div class="holder">
-            <span id="B11"
-                  class="hint--top hint--success button chord center_margin"
-                  data-hint="Аккорд E / ми-мажор"
-                  onclick="markNotesFor('E');">
-                E
-            </span>
-        </div>
-        <div class="holder">
-            <span id="B20"
-                  class="hint--top hint--success button float_l"
-                  data-hint="Бас C / до"
-                  onclick="markNotesForBass('C', this);">
-                C
-            </span>
-            <span id="B4"
-                  class="hint--top hint--success button float_r"
-                  data-hint="Бас G / соль"
-                  onclick="markNotesForBass('G', this);">
-                G
-            </span>
-        </div>
-        <div class="holder">
-            <span id="B12"
-                  class="hint--top hint--success button center_margin"
-                  data-hint="Бас E / ми"
-                  onclick="markNotesForBass('E', this);">
-                E
-            </span>
-        </div>
-        <div class="holder">
-            <span id="B21"
-                  class="hint--top hint--success button float_l"
-                  data-hint="Бас D / ре"
-                  onclick="markNotesForBass('D', this);">
-                D
-            </span>
-            <div id="B5"
-                 class="hint--top hint--success button chord float_r"
-                 data-hint="Аккорд C / до-мажор"
-                 onclick="markNotesFor('C');">
-                C
-            </div>
-        </div>
-        <div class="holder">
-            <span id="B13"
-                  class="hint--top hint--success button chord center_margin"
-                  data-hint="Аккорд Am / ля-минор"
-                  onclick="markNotesFor('Am');">
-                Am
-            </span>
-        </div>
-        <div class="holder">
-            <span id="B22"
-                  class="hint--top hint--success button float_l"
-                  data-hint="Бас E / ми"
-                  onclick="markNotesForBass('E', this);">
-                E
-            </span>
-            <div id="B6"
-                 class="hint--top hint--success button float_r"
-                 data-hint="Бас C / до"
-                 onclick="markNotesForBass('C', this);">
-                C
-            </div>
-        </div>
-        <div class="holder">
-            <span id="B14"
-                  class="hint--top hint--success button center_margin"
-                  data-hint="Бас A / ля"
-                  onclick="markNotesForBass('A', this);">
-                A
-            </span>
-        </div>
-        <div class="holder">
-            <span id="B23"
-                  class="hint--top hint--success button float_l"
-                  data-hint="Бас F / фа"
-                  onclick="markNotesForBass('F', this);">
-                F
-            </span>
-            <div id="B7"
-                 class="hint--top hint--success button chord float_r"
-                 data-hint="Аккорд F / фа-мажор"
-                 onclick="markNotesFor('F');">
-                F
-            </div>
-        </div>
-        <div class="holder">
-            <span id="B15"
-                  class="hint--top hint--success button chord center_margin"
-                  data-hint="Аккорд Dm / ре-минор"
-                  onclick="markNotesFor('Dm');">
-                    Dm
-            </span>
-        </div>
-        <div class="holder">
-            <span id="B24"
-                  class="hint--top hint--success button float_l"
-                  data-hint="Бас G / соль"
-                  onclick="markNotesForBass('G', this);">
-                G
-            </span>
-            <div id="B8"
-                 class="hint--top hint--success button float_r"
-                 data-hint="Бас F / фа"
-                 onclick="markNotesForBass('F', this);">
-                F
-            </div>
-        </div>
-        <div class="holder">
-            <span id="B16"
-                  class="hint--top hint--success button center_margin"
-                  data-hint="Бас D / ре"
-                  onclick="markNotesForBass('D', this);">
-                D
-            </span>
-        </div>
-        <div class="holder">
-            <span id="B25"
-                  class="hint--top hint--success button float_l"
-                  data-hint="Бас A / ля"
-                  onclick="markNotesForBass('A', this);">
-                A
-            </span>
-        </div>
-    </div>
-    <div style="margin: 5px;height: 89px;">
-        <div style="border:solid 1px black;text-align:center;width:90%;margin-left:auto;margin-right:auto;cursor:pointer;
-                    margin-bottom:4px;"
-             onClick="clearPressed();">
-            Очистить
-        </div>
-        <div style="border:solid 1px black;text-align:center;width:90%;margin-left:auto;margin-right:auto;cursor:pointer;"
-             onClick="stopMelody();">
-            Остановить мелодию
-        </div>
-    </div>
-    </td>
-    </tr>
+                <div id="left_kbd_holder">
+                    <div id="left_kbd_space" onClick="clearPressed();">&nbsp;
+                    </div> <!-- end space -->
+                    <div id="left_kbd">
+                        <div class="holder_lkdb">
+                            <div id="B17" class="button flex_l" onclick="markNote(this);"
+                                 data-button='{"number" : 17, "side" :"l"}'
+                                 data-score='{"octave" : 2, "note" : "F#"}'>F#</div>
+                            <div id="B9" class="button chord flex_c" onclick="markNotesForChord(9);"
+                                 data-button='{"number" : 9, "side" :"l", "chord" : "true"}'
+                                 data-score='{"chord" : []}'>H</div>
+                            <div id="B1" class="button chord flex_r" onclick="markNotesForChord(1);"
+                                 data-button='{"number" : 1, "side" :"l", "chord" : "true"}'
+                                 data-score='{"chord" : []}'>D</div>
+                        </div>
+                        <div class="holder_lkdb">
+                            <div id="B18" class="button flex_l" onclick="markNote(this);"
+                                 data-button='{"number" : 18, "side" :"l"}'
+                                 data-score='{"octave" : 2, "note" : "A" }'>A</div>
+                            <div id="B10" class="button flex_c" onclick="markNote(this);"
+                                 data-button='{"number" : 10, "side" :"l"}'
+                                 data-score='{"octave" : 2, "note" : "H" }'>H</div>
+                            <div id="B2" class="button flex_r" onclick="markNote(this);"
+                                 data-button='{"number" : 2, "side" :"l"}'
+                                 data-score='{"octave" : 3, "note" : "D" }'>D</div>
+                        </div>
+                        <div class="holder_lkdb">
+                            <div id="B19" class="button flex_l" onclick="markNote(this);"
+                                 data-button='{"number" : 19, "side" :"l"}'
+                                 data-score='{"octave" : 2, "note" : "H" }'>H</div>
+                            <div id="B11" class="button chord flex_c" onclick="markNotesForChord(11);"
+                                 data-button='{"number" : 11, "side" :"l", "chord" : "true"}'
+                                 data-score='{"chord" : []}'>E</div>
+                            <div id="B3" class="button chord flex_r" onclick="markNotesForChord(3);"
+                                 data-button='{"number" : 3, "side" :"l", "chord" : "true"}'
+                                 data-score='{"chord" : []}'>G</div>
+                        </div>
+                        <div class="holder_lkdb">
+                            <div id="B20" class="button flex_l" onclick="markNote(this);"
+                                 data-button='{"number" : 20, "side" :"l"}'
+                                 data-score='{"octave" : 3, "note" : "C" }'>C</div>
+                            <div id="B12" class="button flex_c" onclick="markNote(this);"
+                                 data-button='{"number" : 12, "side" :"l"}'
+                                 data-score='{"octave" : 3, "note" : "E" }'>E</div>
+                            <div id="B4" class="button flex_r" onclick="markNote(this);"
+                                 data-button='{"number" : 4, "side" :"l"}'
+                                 data-score='{"octave" : 2, "note" : "G" }'>G</div>
+                        </div>
+                        <div class="holder_lkdb">
+                            <div id="B21" class="button flex_l" onclick="markNote(this);"
+                                 data-button='{"number" : 21, "side" :"l"}'
+                                 data-score='{"octave" : 3, "note" : "D" }'>D</div>
+                            <div id="B13" class="button chord flex_c" onclick="markNotesForChord(13);"
+                                 data-button='{"number" : 13, "side" :"l", "chord" : "true"}'
+                                 data-score='{"chord" : []}'>Am</div>
+                            <div id="B5" class="button chord flex_r" onclick="markNotesForChord(5);"
+                                 data-button='{"number" : 5, "side" :"l", "chord" : "true"}'
+                                 data-score='{"chord" : []}'>C</div>
+                        </div>
+                        <div class="holder_lkdb">
+                            <div id="B22" class="button flex_l" onclick="markNote(this);"
+                                 data-button='{"number" : 22, "side" :"l"}'
+                                 data-score='{"octave" : 3, "note" : "E" }'>E</div>
+                            <div id="B14" class="button flex_c" onclick="markNote(this);"
+                                 data-button='{"number" : 14, "side" :"l"}'
+                                 data-score='{"octave" : 2, "note" : "A" }'>A</div>
+                            <div id="B6" class="button flex_r" onclick="markNote(this);"
+                                 data-button='{"number" : 6, "side" :"l"}'
+                                 data-score='{"octave" : 3, "note" : "C" }'>C</div>
+                        </div>
+                        <div class="holder_lkdb">
+                            <div id="B23" class="button flex_l" onclick="markNote(this);"
+                                 data-button='{"number" : 23, "side" :"l"}'
+                                 data-score='{"octave" : 3, "note" : "F" }'>F</div>
+                            <div id="B15" class="button chord flex_c" onclick="markNotesForChord(15);"
+                                 data-button='{"number" : 15, "side" :"l", "chord" : "true"}'
+                                 data-score='{"chord" : []}'>Dm</div>
+                            <div id="B7" class="button chord flex_r" onclick="markNotesForChord(7);"
+                                 data-button='{"number" : 7, "side" :"l", "chord" : "true"}'
+                                 data-score='{"chord" : []}'>F</div>
+                        </div>
+                        <div class="holder_lkdb">
+                            <div id="B24" class="button flex_l" onclick="markNote(this);"
+                                 data-button='{"number" : 24, "side" :"l"}'
+                                 data-score='{"octave" : 2, "note" : "G" }'>G</div>
+                            <div id="B16" class="button flex_c" onclick="markNote(this);"
+                                 data-button='{"number" : 16, "side" :"l"}'
+                                 data-score='{"octave" : 3, "note" : "D" }'>D</div>
+                            <div id="B8" class="button flex_r" onclick="markNote(this);"
+                                 data-button='{"number" : 8, "side" :"l"}'
+                                 data-score='{"octave" : 2, "note" : "F" }'>F</div>
+                        </div>
+                        <div class="holder_lkdb">
+                            <div id="B25" class="button flex_l" onclick="markNote(this);"
+                                 data-button='{"number" : 25, "side" :"l"}'
+                                 data-score='{"octave" : 2, "note" : "A" }'>A</div>
+                        </div>
+                    </div>
+                </div><!-- end kbd-holder -->
+            </td>
+        </tr>
     </table>
 </div>
+
 <div style="height:30px;">
     <h6 style="text-align: center;">
         by Ivan A. Ivanchikov (aka <a href="https://github.com/Taller" target="_blank">Taller</a>)
@@ -390,65 +877,9 @@
 </body>
 </html>
 <script type="text/javascript">
-    // заполняем меню для темпа
-    var sel = document.getElementById('tempo');
-    var i, opt;
-    for (i = 5; i <= 20; i++) {
-        opt = document.createElement('option');
-        opt.innerHTML = 'Метроном = ' + i + ' уд./мин.';
-        opt.value = i;
-        if (i === settings['metronom']) {
-            opt.selected = true;
-        }
-        sel.appendChild(opt);
-    }
-    for (i = 30; i <= 250; i += 10) {
-        opt = document.createElement('option');
-        opt.innerHTML = 'Метроном = ' + i + ' уд./мин.';
-        opt.value = i;
-        if (i === settings['metronom']) {
-            opt.selected = true;
-        }
-        sel.appendChild(opt);
-    }
-
-    <!-- добавляем цифры к кнопкам -->
+    actions.initToneDropDown();
     for (i = 1; i <= 25; i++) {
-        var elLeft = document.getElementById('B' + i);
-        var elRight = document.getElementById('N' + i);
-        var newEL;
-        if (elLeft != undefined) {
-            newEL = document.createElement('div');
-            newEL.textContent = '' + i;
-            newEL.className = 'btn_number';
-            elLeft.appendChild(newEL);
-        }
-        if (elRight != undefined) {
-            newEL = document.createElement('div');
-            newEL.textContent = '' + i;
-            newEL.className = 'btn_number';
-            elRight.appendChild(newEL);
-        }
+        actions.addNumbersToButtonsLeft(i);
+        actions.addNumbersToButtonsRight(i);
     }
 </script>
-<!-- Добавляем мелодии -->
-<script type="text/javascript" src="songs/0000_test.js"></script>
-<script type="text/javascript" src="songs/0001_lizaveta.js"></script>
-<script type="text/javascript" src="songs/0002_vologda.js"></script>
-<script type="text/javascript">
-    var sel = document.getElementById('melodies');
-
-    var opt;
-    opt = document.createElement('option');
-    opt.innerHTML = '--== Остановить мелодию ==--';
-    opt.value = 'stop';
-    sel.appendChild(opt);
-
-    for (var item in songs) {
-        opt = document.createElement('option');
-        opt.innerHTML = songs[item][0]['Name'];
-        opt.value = item;
-        sel.appendChild(opt);
-    }
-</script>
-
